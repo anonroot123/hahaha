@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libanogs.so bypass · CODM Garena v1.6.56</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0c0f;
+            color: #bcc4d4;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #0f131c;
+            border-radius: 20px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            border: 1px solid #1d2535;
+        }
+        h1, h2, h3, h4 {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #9bccb0;
+            border-bottom: 2px solid #1f2a3f;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #6fbf8f;
+            background: #0f1a1f;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #1a3a2a;
+            letter-spacing: 0.3px;
+        }
+        .version-tag {
+            font-size: 0.85rem;
+            background: #0f1a1f;
+            color: #6fbf8f;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            border: 1px solid #1a3a2a;
+            margin-left: 0.5rem;
+            text-shadow: 0 0 8px rgba(80, 200, 120, 0.15);
+        }
+        .dev-brand {
+            font-size: 0.85rem;
+            color: #7ac09a;
+            background: #0d161a;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #1a3a2a;
+            margin-left: 0.5rem;
+        }
+        .brand-badge {
+            display: inline-block;
+            background: #0f1a1f;
+            color: #6fbf8f;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #1a3a2a;
+            font-size: 0.75rem;
+            margin-right: 0.3rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2.4rem;
+            margin-bottom: 1rem;
+            color: #8fc9a8;
+            border-left: 4px solid #3d7a5e;
+            padding-left: 1rem;
+        }
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 1.6rem;
+            margin-bottom: 0.6rem;
+            color: #8fc9a8;
+        }
+        p {
+            margin-bottom: 1rem;
+            color: #aab6d0;
+        }
+        .code-block {
+            background: #090d15;
+            border-radius: 14px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.2rem 0 1.8rem 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            border: 1px solid #1a2a2a;
+            color: #b0d0c0;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+        }
+        .code-block .comment { color: #3a5a4a; }
+        .code-block .keyword { color: #8baa9e; }
+        .code-block .func { color: #6d9fcd; }
+        .code-block .num { color: #d4a373; }
+        .code-block .str { color: #8fb58f; }
+        .code-block .green { color: #5f9b7a; }
+        .code-block .red { color: #b56b6b; }
+        .code-block .yellow { color: #d4b06a; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem 0;
+            font-size: 0.85rem;
+            background: #0c111b;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #1a2a2a;
+        }
+        th {
+            background: #0f1a1f;
+            color: #8fc9a8;
+            font-weight: 500;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            border-bottom: 2px solid #1a3a2a;
+            letter-spacing: 0.3px;
+        }
+        td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid #14221f;
+            color: #bcc9e5;
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+        .offset {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0d161a;
+            padding: 0.1rem 0.5rem;
+            border-radius: 6px;
+            color: #7ac09a;
+            font-size: 0.75rem;
+            border: 1px solid #1a2a22;
+            white-space: nowrap;
+        }
+        .threat-badge {
+            display: inline-block;
+            background: #1a0a0a;
+            color: #c07a7a;
+            padding: 0.05rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            border: 1px solid #3a1a1a;
+            margin-right: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .fix-badge {
+            display: inline-block;
+            background: #0a1a0a;
+            color: #6fbf8f;
+            padding: 0.05rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            border: 1px solid #1a3a2a;
+            margin-right: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+        .card {
+            background: #0d1320;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #1a2a2a;
+            transition: border 0.15s;
+        }
+        .card:hover { border-color: #2d4a3a; }
+        .card h4 { color: #8fc9a8; margin-bottom: 0.4rem; }
+        .card p { color: #99aacb; font-size: 0.9rem; }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, #1a2a2a, #2a4a3a, #1a2a2a);
+            margin: 2rem 0;
+        }
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1a2a22;
+            font-size: 0.8rem;
+            color: #4a7a5a;
+            text-align: right;
+        }
+        .inline-mono {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0d161a;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            color: #7ac09a;
+            font-size: 0.85rem;
+            border: 1px solid #1a2a22;
+        }
+        .green-highlight { color: #6fbf8f; }
+        .orange-highlight { color: #d4a373; }
+        .blue-highlight { color: #6d9fcd; }
+        .red-highlight { color: #b56b6b; }
+        .yellow-highlight { color: #d4b06a; }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(80, 200, 120, 0.08);
+        }
+        .team-section {
+            background: #0a101a;
+            border: 1px solid #1a2a2a;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+        .team-section h3 {
+            color: #8fc9a8;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 2rem;
+        }
+        .team-grid a {
+            color: #7ac09a;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            display: block;
+            padding: 0.15rem 0;
+            border-bottom: 1px solid #14221f;
+            transition: color 0.2s;
+        }
+        .team-grid a:hover {
+            color: #9bccb0;
+            text-decoration: underline;
+        }
+        .team-grid .label {
+            color: #5a7a6a;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: none;
+            padding-top: 0.4rem;
+        }
+        @media (max-width: 760px) {
+            .container { padding: 1.5rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
+        a { color: #4f8a7a; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .effect-detail {
+            font-size: 0.8rem;
+            color: #8aa0b8;
+            display: block;
+            margin-top: 0.15rem;
+        }
+        .effect-detail .highlight {
+            color: #6fbf8f;
+        }
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .capability-item {
+            background: #0d161a;
+            border: 1px solid #1a2a2a;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+        }
+        .capability-item .cat {
+            color: #6fbf8f;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .capability-item .desc {
+            color: #99aacb;
+            font-size: 0.8rem;
+        }
+        .capability-item .status {
+            display: inline-block;
+            padding: 0.05rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            background: #0a1a0a;
+            color: #6fbf8f;
+            border: 1px solid #1a3a2a;
+            margin-top: 0.2rem;
+        }
+        .capability-item .status.warn {
+            background: #1a1a0a;
+            color: #d4b06a;
+            border-color: #3a3a1a;
+        }
+        .warning-box {
+            background: #1a140a;
+            border: 1px solid #3a3a1a;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0 1.5rem 0;
+            color: #d4b06a;
+        }
+        .warning-box strong {
+            color: #e8c86a;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1 class="glow-text">
+        libanogs.so · bypass
+        <small>ACE anti-cheat · CODM Garena</small>
+        <span class="version-tag">v1.6.56</span>
+        <span class="dev-brand">PRINCESS · CESS MOD</span>
+    </h1>
+
+    <p style="font-size:1.05rem; color:#a8b8d8;">
+        Complete subversion of Tencent's <strong>Anti-Cheat Expert</strong> (ACE)
+        for <strong>Call of Duty: Mobile Garena</strong>. This document details
+        the full hook set, memory patches, and network interception layer implemented
+        against <span class="inline-mono">libanogs.so</span>.
+    </p>
+
+    <div style="margin: 0.5rem 0 1.2rem 0; color: #6fbf8f; font-size: 0.9rem;">
+        <span class="brand-badge">DINZ DELUXE</span>
+        <span class="brand-badge">CDC SUPREMO</span>
+        <span class="brand-badge">CESS DINZ</span>
+        <span style="color: #4a7a5a; margin-left: 0.5rem;">— released by CESS MOD</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TEAM & CONTACT -->
+    <h2>Team &amp; Contact</h2>
+    <div class="team-section">
+        <h3>PRINCESS · CESS MOD</h3>
+        <div class="team-grid">
+            <div><span class="label">Main Channel DINZ</span>
+                <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank">https://t.me/+yqKSpOFYBH44MTdl</a></div>
+            <div><span class="label">Backup Main DINZ</span>
+                <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank">https://telegram.me/+uYi4LwT68CQxNmM1</a></div>
+            <div><span class="label">Free Channel CessDINZ</span>
+                <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank">https://t.me/+EtbIvUoG8-UzZjQ1</a></div>
+            <div><span class="label">Free Users</span>
+                <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank">https://telegram.me/+RoE0_1yvHqpmMGZl</a></div>
+            <div><span class="label">Backup Channel DINZ</span>
+                <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank">https://t.me/+VshqcIhp7atmMzM1</a></div>
+            <div><span class="label">CESSMOD Public Channel</span>
+                <a href="https://t.me/Cessmod" target="_blank">https://t.me/Cessmod</a></div>
+            <div><span class="label">Product Pricelist DINZ</span>
+                <a href="https://t.me/priceonlymodinj" target="_blank">https://t.me/priceonlymodinj</a></div>
+            <div><span class="label">Buy/Sell CODM/ML Accounts</span>
+                <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank">https://t.me/+wt_UWW6jKXxlMTQ1</a></div>
+            <div><span class="label">CESS MOD Public Group</span>
+                <a href="https://telegram.me/Cesssdc" target="_blank">https://telegram.me/Cesssdc</a></div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- OVERVIEW -->
+    <h2>Overview</h2>
+    <p>
+        The bypass intercepts critical functions inside <span class="inline-mono">libanogs.so</span>
+        before they can initialise the scanner, rule interpreter, or TDM reporting pipeline.
+        Memory patches disable kill-switches, block VM generation, and neutralise the
+        periodic scan thread. A secondary network hook layer blocks telemetry and
+        crash reporting domains.
+    </p>
+    <div class="grid-2">
+        <div class="card"><h4><span class="blue-highlight">Hook strategy</span></h4><p>50+ hooks on JNI_OnLoad, rule runner, hook installers, config dispatcher, heartbeat loop, VM generators, and TDM report chain. All hooks return zero/null or skip execution.</p></div>
+        <div class="card"><h4><span class="orange-highlight">Memory hardening</span></h4><p>Over 35 memory patches that zero-out globals, disable pthread_mutex_t locks, block VM generation, and erase detection flags.</p></div>
+    </div>
+
+    <!-- BYPASS CAPABILITIES -->
+    <h2>Bypass Capabilities</h2>
+    <p>What this bypass can do against ACE anti-cheat:</p>
+
+    <div class="capability-grid">
+        <!-- Root & System -->
+        <div class="capability-item">
+            <span class="cat">Root &amp; System Integrity</span>
+            <span class="desc">Root detection, Magisk/Zygisk, bootloader unlock, system integrity checks</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Emulator Detection</span>
+            <span class="desc">All emulators (LDPlayer, BlueStacks, Nox, MuMu, etc.) appear as real devices</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Virtual App Detection</span>
+            <span class="desc">Parallel space, dual apps, VirtualXposed, VMOS, other virtual environments</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">X86 Environment</span>
+            <span class="desc">x86 system detection, CPU architecture scanning</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Debugging Tools</span>
+            <span class="desc">Frida, IDA Pro, GDB, ptrace, debugger detection</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Hooking Frameworks</span>
+            <span class="desc">Xposed, Cydia Substrate, TaiChi, LSposed detection</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Auto-Clicker Detection</span>
+            <span class="desc">Touch event analysis, click pattern detection, automation tools</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Memory Scans</span>
+            <span class="desc">Opcode scanning, pattern matching, memory integrity checks</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Periodic Scans</span>
+            <span class="desc">Background scan threads, continuous monitoring</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">TDM Reports</span>
+            <span class="desc">Telemetry Data Model reports sent to Tencent servers</span>
+            <span class="status">✓ BLOCKED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">10-Year Ban Trigger</span>
+            <span class="desc">ESP detection crash, permanent ban activation</span>
+            <span class="status">✓ BLOCKED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Server Communication</span>
+            <span class="desc">GCloud, CrashSight, Bugly, remote config, DNS telemetry</span>
+            <span class="status">✓ BLOCKED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">ACE Heartbeat</span>
+            <span class="desc">Keep-alive signals, ACE health monitoring</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">VM Function Generation</span>
+            <span class="desc">Detection VM code generation (7+ paths blocked)</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Magic Word Triggers</span>
+            <span class="desc">17432605LL detection triggers (7+ locations blocked)</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Main Dispatcher</span>
+            <span class="desc">88+ config cases, 20+ critical detection cases blocked</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">Hook Installation</span>
+            <span class="desc">ACE's own hook mechanisms (ARM64 relocator, trampoline allocator)</span>
+            <span class="status">✓ BYPASSED</span>
+        </div>
+        <div class="capability-item">
+            <span class="cat">5-Minute Crash</span>
+            <span class="desc">report_bk trigger that crashes game at 5 minutes</span>
+            <span class="status">✓ FIXED</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Report Ban Not Confirmed</strong><br>
+        While TDM reports are blocked from being created and submitted, server-side detection
+        based on gameplay patterns or match data may still trigger bans. This bypass has not
+        been fully tested against all server-side heuristics. Use at your own risk.
+    </div>
+
+    <!-- ARCHITECTURE DIAGRAM -->
+    <h2>Control flow · boot sequence</h2>
+    <div class="code-block" style="background:#080c14; border-color:#1a2a2a;">
+        <pre style="margin:0; white-space:pre-wrap; color:#b0d0c0;">ACE boot sequence
+    │
+    ├── JNI_OnLoad (0x1CBB30) ── <span class="red">blocked</span>
+    ├── scanner registry (0x2155B4, 0x276164) ── <span class="red">nullified</span>
+    ├── rule interpreter (0x30EAF4, 0x415654) ── <span class="red">killed</span>
+    ├── hook installer (0x3C6650, 0x44DCB4) ── <span class="green">returns 0</span>
+    ├── TDM report chain (0x4B63E4, 0x4B65F0) ── <span class="green">returns NULL</span>
+    ├── remote config (0x4B5810) ── <span class="green">returns 0</span>
+    ├── Heartbeat loop (0x204AE4, 0x204A38) ── <span class="red">blocked + memory kill</span>
+    ├── Main dispatcher (0x1B5D90) ── <span class="red">88 cases, 20+ blocked</span>
+    └── periodic scan (0x415CDC) ── <span class="red">immediate exit</span></pre>
+    </div>
+
+    <!-- MAIN DISPATCHER EXPLANATION -->
+    <h2>Main Dispatcher · 0x1B5D90</h2>
+    <p>
+        The central configuration dispatcher handles <strong>88+ different cases</strong> that control
+        every aspect of the anti-cheat. This function is the backbone of ACE's runtime behaviour.
+        The bypass blocks <strong>20+ critical cases</strong> that would otherwise trigger detection,
+        kill paths, or telemetry.
+    </p>
+    <div class="code-block" style="background:#080c14; border-color:#1a2a2a;">
+        <pre style="margin:0; white-space:pre-wrap; color:#b0d0c0;"><span class="comment">// Hooked_1B5D90 - Central dispatcher with 88+ cases</span>
+<span class="yellow">Case 8</span>  → Network/connection configuration <span class="red">BLOCKED</span>
+<span class="yellow">Case 10</span> → Emulator detection <span class="red">BLOCKED</span>
+<span class="yellow">Case 14</span> → Version reporting <span class="red">BLOCKED</span>
+<span class="yellow">Case 16</span> → MRPCSACTIVESIG <span class="red">BLOCKED</span>
+<span class="yellow">Case 24-27</span> → Detection modules <span class="red">BLOCKED</span>
+<span class="yellow">Case 35-39, 41, 49, 59, 60</span> → Detection modules <span class="red">BLOCKED</span>
+<span class="yellow">Case 42, 56, 58, 77</span> → Critical runtime <span class="red">BLOCKED</span>
+<span class="yellow">Case 47</span> → GCloud connection toggle <span class="red">BLOCKED</span>
+<span class="yellow">Case 70, 79</span> → Singleton dispatches <span class="red">BLOCKED</span>
+<span class="yellow">Case 75</span> → IPC/socket handler <span class="red">BLOCKED</span></pre>
+    </div>
+
+    <!-- HOOKS TABLE -->
+    <h2>Hooked functions · libanogs.so</h2>
+    <p style="font-size:0.9rem; color:#7a8a9a; margin-bottom:1.5rem;">
+        <span class="threat-badge">Threat</span> = what ACE tries to do with this function<br>
+        <span class="fix-badge">Fix</span> = how the bypass neutralizes it
+    </p>
+
+    <h3>JNI &amp; Boot Initialization</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x1CBB30</span></td>
+                <td>JNI_OnLoad</td>
+                <td><span class="threat-badge">Threat</span> ACE initializes entire anti-cheat engine here</td>
+                <td><span class="fix-badge">Fix</span> Hook returns immediately — ACE never starts</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x4DDEB0</span></td>
+                <td>JNI class name decryption</td>
+                <td><span class="threat-badge">Threat</span> ACE decrypts internal class names for detection</td>
+                <td><span class="fix-badge">Fix</span> Hook returns NULL — ACE can't find its own classes</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x514538</span></td>
+                <td>JNI init flag</td>
+                <td><span class="threat-badge">Threat</span> ACE checks if JNI environment is ready</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — ACE thinks JNI never initialized</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x550300</span></td>
+                <td>Global init</td>
+                <td><span class="threat-badge">Threat</span> ACE global state initialization</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — global state stays uninitialized</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x52BE70</span></td>
+                <td>Global init</td>
+                <td><span class="threat-badge">Threat</span> Secondary global state for ACE</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — keeps ACE in broken state</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Scanner &amp; Rule Engine</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x2155B4</span></td>
+                <td>Scanner module constructor</td>
+                <td><span class="threat-badge">Threat</span> Creates scanner objects that scan memory for cheats</td>
+                <td><span class="fix-badge">Fix</span> Hook returns 0 — scanner objects never created</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x276164</span></td>
+                <td>Scanner registration caller</td>
+                <td><span class="threat-badge">Threat</span> Registers all detection scanners</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks all registrations — no scanners active</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x30EAF4</span></td>
+                <td>ace_run_scan_rules</td>
+                <td><span class="threat-badge">Threat</span> Executes detection rules against game memory</td>
+                <td><span class="fix-badge">Fix</span> Hook kills the rule interpreter — rules never execute</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x415654</span></td>
+                <td>Rule runner</td>
+                <td><span class="threat-badge">Threat</span> Actually runs individual detection rules</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks execution — detection rules never run</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Hook Installation Prevention</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x3C6650</span></td>
+                <td>ARM64 instruction relocator</td>
+                <td><span class="threat-badge">Threat</span> ACE uses this to install its own hooks</td>
+                <td><span class="fix-badge">Fix</span> Hook prevents hook installation — ACE can't hook anything</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x44AACC</span></td>
+                <td>Inline jump writer</td>
+                <td><span class="threat-badge">Threat</span> Writes inline jumps for ACE hooks</td>
+                <td><span class="fix-badge">Fix</span> Hook returns false — no jumps get written</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x44DCB4</span></td>
+                <td>Type-12 hook installer</td>
+                <td><span class="threat-badge">Threat</span> Installs specific type of ACE hook</td>
+                <td><span class="fix-badge">Fix</span> Hook returns 0 — this hook type never installs</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x44D4DC</span></td>
+                <td>Trampoline allocator</td>
+                <td><span class="threat-badge">Threat</span> Allocates memory for hook trampolines</td>
+                <td><span class="fix-badge">Fix</span> Hook returns 0 — no trampoline memory allocated</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Heartbeat Loop (HB Loop) — CRITICAL</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x204AE4</span></td>
+                <td>HB loop start</td>
+                <td><span class="threat-badge">Threat</span> Starts the heartbeat that keeps ACE alive</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — heartbeat never starts</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x204A38</span></td>
+                <td>HB loop end</td>
+                <td><span class="threat-badge">Threat</span> Completes heartbeat cycle, signals ACE is alive</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — ACE appears dead</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x519A90</span></td>
+                <td>HB loop memory block</td>
+                <td><span class="threat-badge">Threat</span> Stores heartbeat state data</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — corrupts heartbeat state</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x5697B0</span></td>
+                <td>HB loop memory block</td>
+                <td><span class="threat-badge">Threat</span> Additional heartbeat state</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — more corruption</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x569798</span></td>
+                <td>HB loop memory block</td>
+                <td><span class="threat-badge">Threat</span> Third heartbeat state variable</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — completely breaks heartbeat</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>TDM Report Chain</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x4B63E4</span></td>
+                <td>ace_create_tdm_report</td>
+                <td><span class="threat-badge">Threat</span> Creates report about suspicious player activity</td>
+                <td><span class="fix-badge">Fix</span> Hook returns NULL — no report created</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x4B65F0</span></td>
+                <td>ace_submit_corereport</td>
+                <td><span class="threat-badge">Threat</span> Submits report to Tencent servers</td>
+                <td><span class="fix-badge">Fix</span> Hook returns NULL — report never sent</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x4B5810</span></td>
+                <td>REMOTECONFIG channel setup</td>
+                <td><span class="threat-badge">Threat</span> Connects to Tencent remote config server</td>
+                <td><span class="fix-badge">Fix</span> Hook returns 0 — no remote connection</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A854</span></td>
+                <td>g_tdm_report_enabled</td>
+                <td><span class="threat-badge">Threat</span> ACE checks if TDM reporting is enabled</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — reporting disabled</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A855</span></td>
+                <td>g_tdm_report_checked</td>
+                <td><span class="threat-badge">Threat</span> ACE tracks if reporting was already checked</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 1 — marks as already checked so ACE skips it</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A858</span></td>
+                <td>3-strike auto-disable</td>
+                <td><span class="threat-badge">Threat</span> ACE auto-disables after 3 detection strikes</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 3 — forces ACE into disabled state</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Hook Callers (VM &amp; Unity)</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x307D78</span></td>
+                <td>Hook caller 4</td>
+                <td><span class="threat-badge">Threat</span> Evaluates VM detection results</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks VM evaluation — detection results ignored</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x30A4E0</span></td>
+                <td>Hook caller 5</td>
+                <td><span class="threat-badge">Threat</span> Installs hooks in Unity Mono runtime</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — no Unity hooks installed</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x30BCD4</span></td>
+                <td>Hook caller 6</td>
+                <td><span class="threat-badge">Threat</span> Deduplicates library symbols for hooks</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — symbols not processed</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>VM Function Generation</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x3893D8</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Generates VM functions for detection</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — VM never generates</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x30FD94</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Alternative VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — kills this path too</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x321F2C</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Third VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — no VM functions at all</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x42BA18</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Fourth VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — completely kills VM</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x45A040</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Fifth VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — redundant kill</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x44A3F0</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Sixth VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — overkill but safe</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x41B69C</span></td>
+                <td>VM function gen</td>
+                <td><span class="threat-badge">Threat</span> Seventh VM generation path</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — all VM generation dead</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Magic Word Blockers (17432605LL)</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x1FFE14</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> ACE checks for magic word that triggers detection</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — magic word never processed</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x211BFC</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> Second magic word check point</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — detection trigger disabled</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x1EBB88</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> Third magic word location</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — redundant safety</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x1EC008</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> Fourth magic word location</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — kills another trigger</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x1F2088</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> Fifth magic word location</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — no detection triggers</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x1F99F8</span></td>
+                <td>Magic word handler</td>
+                <td><span class="threat-badge">Threat</span> Sixth magic word location</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — complete trigger kill</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x1FE600</span></td>
+                <td>Magic word main loader</td>
+                <td><span class="threat-badge">Threat</span> Main loader that checks magic word</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — main loader neutralized</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Kill Path &amp; Detection Prevention</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x1D3D7C</span></td>
+                <td>Strategy initialization</td>
+                <td><span class="threat-badge">Threat</span> ACE loads detection strategies</td>
+                <td><span class="fix-badge">Fix</span> Hook returns 0 — no strategies loaded</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x23AFBC</span></td>
+                <td>force_qia</td>
+                <td><span class="threat-badge">Threat</span> Forces QIA (Quick Integrity Assessment) scan</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — QIA never forced</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x44BC90</span></td>
+                <td>ESP crash / 10yr ban fix</td>
+                <td><span class="threat-badge">Threat</span> Crashes game or triggers 10-year ban</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — game doesn't crash, no 10yr ban</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x215738</span></td>
+                <td>CASE 1 dispatcher</td>
+                <td><span class="threat-badge">Threat</span> Dispatches CASE 1 detection logic</td>
+                <td><span class="fix-badge">Fix</span> Hook neutralises — CASE 1 doesn't execute</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x51B670</span></td>
+                <td>CASE 1 load block</td>
+                <td><span class="threat-badge">Threat</span> Loads CASE 1 detection data</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data loaded</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Periodic Scan &amp; Threads</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x415CDC</span></td>
+                <td>Periodic scan thread</td>
+                <td><span class="threat-badge">Threat</span> Spawns thread that repeatedly scans for cheats</td>
+                <td><span class="fix-badge">Fix</span> Hook exits immediately — scan thread never runs</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x4C0E74</span></td>
+                <td>pthread_mutex_t</td>
+                <td><span class="threat-badge">Threat</span> Mutex lock for scan thread synchronization</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — mutex never locks</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A5C8</span></td>
+                <td>Load block</td>
+                <td><span class="threat-badge">Threat</span> Loads data for periodic scan</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data loaded</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A5D0</span></td>
+                <td>Load block</td>
+                <td><span class="threat-badge">Threat</span> Second periodic scan data block</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x555798</span></td>
+                <td>Load block</td>
+                <td><span class="threat-badge">Threat</span> Third periodic scan data block</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x555790</span></td>
+                <td>Load block</td>
+                <td><span class="threat-badge">Threat</span> Fourth periodic scan data block</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A930</span></td>
+                <td>pthread_mutex_t block</td>
+                <td><span class="threat-badge">Threat</span> Mutex state for scan synchronization</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — mutex broken</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x55A934</span></td>
+                <td>pthread_mutex_t block</td>
+                <td><span class="threat-badge">Threat</span> Secondary mutex state</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — mutex completely broken</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Miscellaneous Hooks</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><span class="offset">0x1D0938</span></td>
+                <td>ob_ INIT block</td>
+                <td><span class="threat-badge">Threat</span> Initializes OB (object) detection blocks</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — OB detection never starts</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x4A9A00</span></td>
+                <td>Detection module dispatch</td>
+                <td><span class="threat-badge">Threat</span> Dispatches detection modules</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — no modules dispatched</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x204218</span></td>
+                <td>trigger report_bk</td>
+                <td><span class="threat-badge">Threat</span> Triggers report_bk that crashes at 5 minutes ingame</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch — 5min crash fixed</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x202680</span></td>
+                <td>sc_idle fc</td>
+                <td><span class="threat-badge">Threat</span> Idle scan check function</td>
+                <td><span class="fix-badge">Fix</span> Hook blocks — idle scan disabled</td>
+            </tr>
+            <tr>
+                <td><span class="offset">0x5508D4</span></td>
+                <td>report_bk global load trigger</td>
+                <td><span class="threat-badge">Threat</span> Loads report_bk global state</td>
+                <td><span class="fix-badge">Fix</span> Memory patch = 0 — report_bk never triggers</td>
+            </tr>
+        </tbody>
+    </table>
+
+     <h3>UNDEFINED FUNCTION</h3>
+    <table>
+        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+        <tbody>
+            <tr><td><span class="offset">0x28C134</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x2D1BBC</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x2AEC04</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x217730</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x4D6040</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x4D5EC4</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x4D614C</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x4D6248</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x28FCEC</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x239E04</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x28BB10</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x28DA20</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+            <tr><td><span class="offset">0x2CE218</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
+        </tbody>
+    </table>
+
+    <!-- MEMORY PATCHES -->
+    <h2>Memory patches · libanogs.so</h2>
+    <table>
+        <thead><tr><th>Address</th><th>Value</th><th>What this does</th></tr></thead>
+        <tbody>
+            <tr><td><span class="offset">0x55A854</span></td><td>0</td><td>Disables TDM reporting globally</td></tr>
+            <tr><td><span class="offset">0x55A855</span></td><td>1</td><td>Marks TDM report check as already done → ACE skips it</td></tr>
+            <tr><td><span class="offset">0x55A858</span></td><td>3</td><td>Forces 3-strike auto-disable → ACE thinks it's already disabled</td></tr>
+            <tr><td><span class="offset">0x550460-0x550488</span></td><td>0</td><td>Erases OB ZIP filenames (ob_cdn2.zip, ob_cs2.zip, ob_gs2.zip, ob_cdn2_64.zip, ob_cs2_64.zip, ob_gs2_64.zip) → ACE can't find them</td></tr>
+            <tr><td><span class="offset">0x550490</span></td><td>1</td><td>Blocks gen_vm_handler.img → VM generation disabled</td></tr>
+            <tr><td><span class="offset">0x514538</span></td><td>0</td><td>Breaks JNI init flag → ACE thinks JNI isn't ready</td></tr>
+            <tr><td><span class="offset">0x550300</span></td><td>0</td><td>Breaks global initialization state</td></tr>
+            <tr><td><span class="offset">0x52BE70</span></td><td>0</td><td>Breaks secondary global init state</td></tr>
+            <tr><td><span class="offset">0x519A90</span></td><td>0</td><td>Corrupts heartbeat loop state → kills HB loop</td></tr>
+            <tr><td><span class="offset">0x5697B0</span></td><td>0</td><td>Corrupts second heartbeat state variable</td></tr>
+            <tr><td><span class="offset">0x569798</span></td><td>0</td><td>Corrupts third heartbeat state variable</td></tr>
+            <tr><td><span class="offset">0x51B670</span></td><td>0</td><td>Kills CASE 1 load block → CASE 1 detection disabled</td></tr>
+            <tr><td><span class="offset">0x55A5D0</span></td><td>0</td><td>Breaks periodic scan load block</td></tr>
+            <tr><td><span class="offset">0x5556E0</span></td><td>0</td><td>Breaks second periodic scan load block</td></tr>
+            <tr><td><span class="offset">0x550B58</span></td><td>0</td><td>Breaks global init state</td></tr>
+            <tr><td><span class="offset">0x55A5C8</span></td><td>0</td><td>Breaks third periodic scan load block</td></tr>
+            <tr><td><span class="offset">0x555798</span></td><td>0</td><td>Breaks fourth periodic scan load block</td></tr>
+            <tr><td><span class="offset">0x555790</span></td><td>0</td><td>Breaks fifth periodic scan load block</td></tr>
+            <tr><td><span class="offset">0x55A930</span></td><td>0</td><td>Breaks pthread_mutex_t for scan synchronization</td></tr>
+            <tr><td><span class="offset">0x55A934</span></td><td>0</td><td>Breaks secondary pthread_mutex_t</td></tr>
+            <tr><td><span class="offset">0x5508D0</span></td><td>0</td><td>Breaks pthread_once initialization block</td></tr>
+            <tr><td><span class="offset">0x550219</span></td><td>0</td><td>Breaks global data load state</td></tr>
+            <tr><td><span class="offset">0x55020C</span></td><td>0</td><td>Breaks global enable flag → ACE thinks it's disabled</td></tr>
+            <tr><td><span class="offset">0x5502F8</span></td><td>0</td><td>Breaks fallback handler → no recovery path</td></tr>
+            <tr><td><span class="offset">0x5508D4</span></td><td>0</td><td>Breaks report_bk global load → 5min crash fixed</td></tr>
+        </tbody>
+    </table>
+
+    <!-- NETWORK HOOK LAYER -->
+    <h2>Network interception · libc &amp; curl</h2>
+    <p>
+        A secondary layer intercepts all network I/O to block telemetry, crash reporting,
+        and domain-based kill switches. DNS and socket functions redirect blocked
+        hosts to loopback.
+    </p>
+
+    <table>
+        <thead><tr><th>Function</th><th>Library</th><th>Interception strategy</th></tr></thead>
+        <tbody>
+            <tr><td>socket</td><td>libc.so</td><td>Passthrough; used as dependency for other hooks</td></tr>
+            <tr><td>connect</td><td>libc.so</td><td>Redirects to 127.0.0.1 when REDIRECT_FLAG is set</td></tr>
+            <tr><td>inet_pton</td><td>libc.so</td><td>Returns loopback for blocked IP strings</td></tr>
+            <tr><td>getaddrinfo</td><td>libc.so</td><td>Fakes addrinfo with loopback for blocked nodes</td></tr>
+            <tr><td>gethostbyaddr</td><td>libc.so</td><td>Redirects host entry if name is blocked</td></tr>
+            <tr><td>gethostbyname</td><td>libc.so</td><td>Returns loopback for blocked domains</td></tr>
+            <tr><td>gethostbyname2</td><td>libc.so</td><td>Supports AF_INET/AF_INET6 loopback redirect</td></tr>
+            <tr><td>sendto / recvfrom</td><td>libc.so</td><td>Block IP-based destinations</td></tr>
+            <tr><td>send / recv</td><td>libc.so</td><td>Fake success on redirected connections</td></tr>
+            <tr><td>read / write</td><td>libc.so</td><td>Passthrough</td></tr>
+            <tr><td>accept / accept4</td><td>libc.so</td><td>Passthrough</td></tr>
+            <tr><td>socketpair</td><td>libc.so</td><td>Passthrough</td></tr>
+            <tr><td>ioctl</td><td>libc.so</td><td>Passthrough</td></tr>
+            <tr><td>curl_easy_init / curl_easy_setopt</td><td>libcurl.so</td><td>Intercept CURLOPT_URL, replace blocked URLs</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Blocklist (excerpt)</h3>
+    <p>
+        The bypass maintains a blocklist of over 200 domains and IPs associated with
+        Tencent's telemetry, crash reporting, and anti-cheat infrastructure.
+    </p>
+    <div class="code-block" style="max-height:180px; overflow-y:auto;">
+        <pre style="margin:0; color:#8a9fc9;">"glcs.listdl.com", "dl.tomjson.com", "intl.acekeeper.anticheatexpert.com",
+"android.crashsight.wetest.net", "cloud.gsdk.proximabeta.com",
+"cs.mbgame.gamesafe.qq.com", "anticheatexpert.com", "crashsight.qq.com",
+"tencent.com", "gcloud.com", "qq.com", "garena-call-of-duty.firebaseio.com",
+"tapjoy.com", "down.anticheatexpert.com", "pubgmobile.anticheat.com",
+"reports.crashlytics.com", "astat.bugly.qcloud.com", "sg.tdatamaster.com",
+"group.qpic.cn", "pay.qq.com", "docs.qq.com", "wtlogin.qq.com",
+"cloudctrl.gcloud.qq.com", "cloudconfig.googleapis.com",
+"app.adjust.com", "lh3.googleusercontent.com", "119.28.121.174",
+"150.109.0.45", "asia.csoversea.mbgame.anticheatexpert.com"</pre>
+    </div>
+
+    <!-- IMPLEMENTATION -->
+    <h2>Implementation notes</h2>
+    <p>
+        Hooks are installed via <span class="inline-mono">Dobby</span> at runtime.
+        Each hook uses a trampoline to preserve original behaviour where needed.
+        The <span class="inline-mono">REDIRECT_FLAG</span> coordinates between
+        DNS spoofing and connect-time redirection.
+    </p>
+    <div class="code-block">
+        <pre style="margin:0;"><span class="comment">// gethostbyname hook — redirect blocked domains to 127.0.0.1</span>
+<span class="keyword">struct</span> hostent* hookedGetHostByName(<span class="keyword">const char</span> *name) {
+    <span class="keyword">if</span> (name && is_blocked(name)) {
+        <span class="keyword">static</span> <span class="keyword">struct</span> hostent redirected_host;
+        <span class="comment">// fill with loopback 127.0.0.1</span>
+        REDIRECT_FLAG = 1;
+        <span class="keyword">return</span> &redirected_host;
+    }
+    REDIRECT_FLAG = 0;
+    <span class="keyword">return</span> originalGetHostByName(name);
+}</pre>
+    </div>
+
+    <div class="divider"></div>
+    <div class="footer-note">
+        IDA Pro 9.0 · libanogs.so · CODM Garena v1.6.56 · bypass v1.0<br>
+        <span style="color: #5a7a6a;">PRINCESS · CESS MOD · DINZ DELUXE · CDC SUPREMO</span>
+    </div>
+</div>
+</body>
+</html>
