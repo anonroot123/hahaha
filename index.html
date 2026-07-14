@@ -1,753 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>libanogs.so bypass · CODM Garena v1.x.56</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #0a0c0f;
-            color: #bcc4d4;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            padding: 2rem 1.5rem;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: #0f131c;
-            border-radius: 20px;
-            padding: 2.5rem 2.8rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            border: 1px solid #1d2535;
-        }
-        h1, h2, h3, h4 {
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-        h1 {
-            font-size: 2.2rem;
-            color: #9bccb0;
-            border-bottom: 2px solid #1f2a3f;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-        h1 small {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #6fbf8f;
-            background: #0f1a1f;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            border: 1px solid #1a3a2a;
-            letter-spacing: 0.3px;
-        }
-        .version-tag {
-            font-size: 0.85rem;
-            background: #0f1a1f;
-            color: #6fbf8f;
-            padding: 0.2rem 0.9rem;
-            border-radius: 30px;
-            border: 1px solid #1a3a2a;
-            margin-left: 0.5rem;
-            text-shadow: 0 0 8px rgba(80, 200, 120, 0.15);
-        }
-        .dev-brand {
-            font-size: 0.85rem;
-            color: #7ac09a;
-            background: #0d161a;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            border: 1px solid #1a3a2a;
-            margin-left: 0.5rem;
-        }
-        .brand-badge {
-            display: inline-block;
-            background: #0f1a1f;
-            color: #6fbf8f;
-            padding: 0.1rem 0.8rem;
-            border-radius: 20px;
-            border: 1px solid #1a3a2a;
-            font-size: 0.75rem;
-            margin-right: 0.3rem;
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 2.4rem;
-            margin-bottom: 1rem;
-            color: #8fc9a8;
-            border-left: 4px solid #3d7a5e;
-            padding-left: 1rem;
-        }
-        h3 {
-            font-size: 1.15rem;
-            margin-top: 1.6rem;
-            margin-bottom: 0.6rem;
-            color: #8fc9a8;
-        }
-        p {
-            margin-bottom: 1rem;
-            color: #aab6d0;
-        }
-        .code-block {
-            background: #090d15;
-            border-radius: 14px;
-            padding: 1.2rem 1.6rem;
-            margin: 1.2rem 0 1.8rem 0;
-            overflow-x: auto;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.82rem;
-            line-height: 1.6;
-            border: 1px solid #1a2a2a;
-            color: #b0d0c0;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-        }
-        .code-block .comment { color: #3a5a4a; }
-        .code-block .keyword { color: #8baa9e; }
-        .code-block .func { color: #6d9fcd; }
-        .code-block .num { color: #d4a373; }
-        .code-block .str { color: #8fb58f; }
-        .code-block .green { color: #5f9b7a; }
-        .code-block .red { color: #b56b6b; }
-        .code-block .yellow { color: #d4b06a; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0 2rem 0;
-            font-size: 0.85rem;
-            background: #0c111b;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #1a2a2a;
-        }
-        th {
-            background: #0f1a1f;
-            color: #8fc9a8;
-            font-weight: 500;
-            text-align: left;
-            padding: 0.8rem 1rem;
-            border-bottom: 2px solid #1a3a2a;
-            letter-spacing: 0.3px;
-        }
-        td {
-            padding: 0.6rem 1rem;
-            border-bottom: 1px solid #14221f;
-            color: #bcc9e5;
-            vertical-align: top;
-        }
-        tr:last-child td { border-bottom: none; }
-        .offset {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0d161a;
-            padding: 0.1rem 0.5rem;
-            border-radius: 6px;
-            color: #7ac09a;
-            font-size: 0.75rem;
-            border: 1px solid #1a2a22;
-            white-space: nowrap;
-        }
-        .threat-badge {
-            display: inline-block;
-            background: #1a0a0a;
-            color: #c07a7a;
-            padding: 0.05rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.65rem;
-            border: 1px solid #3a1a1a;
-            margin-right: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .fix-badge {
-            display: inline-block;
-            background: #0a1a0a;
-            color: #6fbf8f;
-            padding: 0.05rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.65rem;
-            border: 1px solid #1a3a2a;
-            margin-right: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.8rem;
-        }
-        .card {
-            background: #0d1320;
-            border-radius: 16px;
-            padding: 1.2rem 1.6rem;
-            border: 1px solid #1a2a2a;
-            transition: border 0.15s;
-        }
-        .card:hover { border-color: #2d4a3a; }
-        .card h4 { color: #8fc9a8; margin-bottom: 0.4rem; }
-        .card p { color: #99aacb; font-size: 0.9rem; }
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, #1a2a2a, #2a4a3a, #1a2a2a);
-            margin: 2rem 0;
-        }
-        .footer-note {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #1a2a22;
-            font-size: 0.8rem;
-            color: #4a7a5a;
-            text-align: right;
-        }
-        .inline-mono {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0d161a;
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            color: #7ac09a;
-            font-size: 0.85rem;
-            border: 1px solid #1a2a22;
-        }
-        .green-highlight { color: #6fbf8f; }
-        .orange-highlight { color: #d4a373; }
-        .blue-highlight { color: #6d9fcd; }
-        .red-highlight { color: #b56b6b; }
-        .yellow-highlight { color: #d4b06a; }
-        .glow-text {
-            text-shadow: 0 0 20px rgba(80, 200, 120, 0.08);
-        }
-        .team-section {
-            background: #0a101a;
-            border: 1px solid #1a2a2a;
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0 2rem 0;
-        }
-        .team-section h3 {
-            color: #8fc9a8;
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-        }
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem 2rem;
-        }
-        .team-grid a {
-            color: #7ac09a;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-family: 'JetBrains Mono', monospace;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            border-bottom: 1px solid #14221f;
-            transition: all 0.2s ease;
-            border-radius: 8px;
-            background: #0d161a;
-            border: 1px solid #1a2a2a;
-            margin: 0.1rem 0;
-            width: auto;
-        }
-        .team-grid a:hover {
-            background: #1a3a2a;
-            border-color: #2a5a4a;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(80, 200, 120, 0.08);
-        }
-        .team-grid a img {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-            flex-shrink: 0;
-        }
-        .team-grid .label {
-            color: #5a7a6a;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: none;
-            padding-top: 0.4rem;
-            display: block;
-            background: transparent;
-            border: none;
-            margin: 0;
-            padding-left: 0;
-        }
-        .team-grid .label:hover {
-            background: transparent;
-            box-shadow: none;
-            border: none;
-        }
-        @media (max-width: 760px) {
-            .container { padding: 1.5rem; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
-            .team-grid a {
-                font-size: 0.7rem;
-                padding: 0.25rem 0.6rem;
-                gap: 0.3rem;
-            }
-            .team-grid a img {
-                width: 14px;
-                height: 14px;
-            }
-        }
-        a { color: #4f8a7a; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .effect-detail {
-            font-size: 0.8rem;
-            color: #8aa0b8;
-            display: block;
-            margin-top: 0.15rem;
-        }
-        .effect-detail .highlight {
-            color: #6fbf8f;
-        }
-        .capability-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0 1.5rem 0;
-        }
-        .capability-item {
-            background: #0d161a;
-            border: 1px solid #1a2a2a;
-            border-radius: 12px;
-            padding: 0.8rem 1.2rem;
-        }
-        .capability-item .cat {
-            color: #6fbf8f;
-            font-weight: 500;
-            font-size: 0.85rem;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-        .capability-item .desc {
-            color: #99aacb;
-            font-size: 0.8rem;
-        }
-        .capability-item .status {
-            display: inline-block;
-            padding: 0.05rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.65rem;
-            background: #0a1a0a;
-            color: #6fbf8f;
-            border: 1px solid #1a3a2a;
-            margin-top: 0.2rem;
-        }
-        .capability-item .status.warn {
-            background: #1a1a0a;
-            color: #d4b06a;
-            border-color: #3a3a1a;
-        }
-        .warning-box {
-            background: #1a140a;
-            border: 1px solid #3a3a1a;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin: 1rem 0 1.5rem 0;
-            color: #d4b06a;
-        }
-        .warning-box strong {
-            color: #e8c86a;
-        }
-        .contact-dev {
-            background: #0f1a1f;
-            border: 2px solid #2a5a4a;
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0 2rem 0;
-            text-align: center;
-        }
-        .contact-dev .big-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #6fbf8f;
-            background: #0d161a;
-            padding: 0.8rem 2.5rem;
-            border-radius: 60px;
-            border: 2px solid #2a5a4a;
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-        .contact-dev .big-link:hover {
-            background: #1a3a2a;
-            border-color: #4a9a7a;
-            text-decoration: none;
-            box-shadow: 0 0 30px rgba(80, 200, 120, 0.15);
-        }
-        .contact-dev .big-link img {
-            width: 36px;
-            height: 36px;
-            vertical-align: middle;
-        }
-        .contact-dev .sub-label {
-            color: #5a7a6a;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        @media (max-width: 600px) {
-            .contact-dev .big-link {
-                font-size: 1.2rem;
-                padding: 0.6rem 1.2rem;
-                gap: 0.4rem;
-            }
-            .contact-dev .big-link img {
-                width: 28px;
-                height: 28px;
-            }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>libanogs.so · ACE bypass · CODM v1.x.56</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- RESET & BASE ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0a0c0f;
+      color: #d6dee8;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .site-wrapper {
+      max-width: 1440px;
+      width: 100%;
+    }
+    a { color: #5fbf8f; text-decoration: none; }
+    a:hover { color: #8cdbb0; }
 
-        /* Region Status Badges */
-        .region-status {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 1.5rem 0 2rem 0;
-            padding: 1.2rem;
-            background: #0a101a;
-            border-radius: 16px;
-            border: 1px solid #1a2a2a;
-        }
-        .region-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: #0d161a;
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid #1a2a2a;
-            transition: all 0.2s ease;
-        }
-        .region-item:hover {
-            border-color: #2a5a4a;
-            box-shadow: 0 0 20px rgba(80, 200, 120, 0.05);
-        }
-        .region-item img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #1a2a2a;
-        }
-        .region-item .region-name {
-            color: #8aa0b8;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .region-item .region-status-badge {
-            display: inline-block;
-            padding: 0.1rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-left: 0.2rem;
-        }
-        .region-item .region-status-badge.safe {
-            background: #0a1a0a;
-            color: #6fbf8f;
-            border: 1px solid #1a3a2a;
-        }
-        .region-item .region-status-badge.fixing {
-            background: #1a140a;
-            color: #d4b06a;
-            border: 1px solid #3a3a1a;
-        }
-        .region-item .region-status-badge.unknown {
-            background: #1a0a0a;
-            color: #c07a7a;
-            border: 1px solid #3a1a1a;
-        }
-        @media (max-width: 600px) {
-            .region-status {
-                gap: 0.8rem;
-                padding: 0.8rem;
-            }
-            .region-item {
-                padding: 0.3rem 0.8rem;
-                gap: 0.4rem;
-            }
-            .region-item img {
-                width: 24px;
-                height: 24px;
-            }
-            .region-item .region-name {
-                font-size: 0.7rem;
-            }
-        }
-    </style>
+    /* ----- TOP NAV (sticky) ----- */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 12, 15, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #2a3a4a;
+      padding: 0.8rem 2rem;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+    }
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #b0e0c8;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-brand i {
+      color: #7fdfa5;
+      font-size: 1.2rem;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: #c8d6e8;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+    .nav-links a:hover {
+      color: #7fdfa5;
+      border-bottom-color: #2a5a4a;
+    }
+    .nav-hamburger {
+      display: none;
+      font-size: 1.4rem;
+      color: #d6dee8;
+      cursor: pointer;
+    }
+    .theme-toggle {
+      background: #0f131c;
+      border: 1px solid #1a2a2a;
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      color: #d6dee8;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .theme-toggle:hover {
+      border-color: #2a5a4a;
+      color: #7fdfa5;
+    }
+
+    /* ----- PROGRESS BAR ----- */
+    .scroll-progress {
+      width: 100%;
+      height: 3px;
+      background: #1a2a2a;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+      border-radius: 0 0 4px 4px;
+      overflow: hidden;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2a5a4a, #7fdfa5);
+      transition: width 0.1s;
+    }
+
+    /* ----- CONTAINER ----- */
+    .container {
+      background: rgba(15, 19, 28, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 2.5rem 2.8rem;
+      border: 1px solid #2a3a4a;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      margin-top: 0.5rem;
+      position: relative;
+    }
+
+    /* ----- HEADINGS ----- */
+    h1 {
+      font-size: 2.2rem;
+      color: #b0e0c8;
+      border-bottom: 2px solid #2a3a4f;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #7fdfa5;
+      background: #0f1a1f;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #1a3a2a;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2.8rem;
+      margin-bottom: 1.2rem;
+      color: #a0dfc0;
+      border-left: 4px solid #3d7a5e;
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    h2 i {
+      font-size: 1.3rem;
+      color: #4a7a5a;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.6rem;
+      color: #a0dfc0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h3 i {
+      font-size: 1rem;
+      color: #4a7a5a;
+    }
+
+    /* ----- TABLES ----- */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0 2rem 0;
+      border-radius: 16px;
+      border: 1px solid #1a2a2a;
+      background: #0c111b;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      color: #d6dee8;
+    }
+    th {
+      background: #0f1a1f;
+      color: #a0dfc0;
+      font-weight: 500;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 2px solid #1a3a2a;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid #1a2a2a;
+      color: #d0dcec;
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    .offset {
+      font-family: 'JetBrains Mono', monospace;
+      background: #0d161a;
+      padding: 0.1rem 0.5rem;
+      border-radius: 6px;
+      color: #8fdfb0;
+      font-size: 0.75rem;
+      border: 1px solid #1a2a22;
+      white-space: nowrap;
+    }
+    .threat-badge, .fix-badge {
+      display: inline-block;
+      padding: 0.05rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-right: 0.2rem;
+    }
+    .threat-badge {
+      background: #1a0a0a;
+      color: #e09090;
+      border: 1px solid #3a1a1a;
+    }
+    .fix-badge {
+      background: #0a1a0a;
+      color: #7fdfa5;
+      border: 1px solid #1a3a2a;
+    }
+
+    /* ----- ACCORDION ----- */
+    .accordion {
+      background: #0d1320;
+      border: 1px solid #1a2a2a;
+      border-radius: 14px;
+      margin: 1.2rem 0;
+      overflow: hidden;
+    }
+    .accordion-header {
+      background: #0f1a1f;
+      padding: 0.8rem 1.4rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: #a0dfc0;
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+    .accordion-header:hover {
+      background: #1a2a2a;
+    }
+    .accordion-header i {
+      transition: 0.3s;
+    }
+    .accordion-header.open i {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #0c111b;
+    }
+    .accordion-body-inner {
+      padding: 1.2rem 1.4rem;
+    }
+    .accordion-body.open {
+      max-height: 3000px;
+    }
+
+    /* ----- CARDS ----- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 1.2rem 0;
+    }
+    .card {
+      background: #0d1320;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      border: 1px solid #1a2a2a;
+      transition: 0.2s;
+    }
+    .card:hover { border-color: #2d4a3a; }
+    .card h4 { color: #a0dfc0; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card p { color: #c0d0e8; font-size: 0.9rem; }
+
+    /* ----- CAPABILITY GRID ----- */
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 1.5rem 0;
+    }
+    .capability-item {
+      background: #0d161a;
+      border: 1px solid #1a2a2a;
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      transition: 0.15s;
+    }
+    .capability-item:hover { border-color: #2a5a4a; }
+    .capability-item .cat {
+      color: #7fdfa5;
+      font-weight: 500;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .capability-item .desc { color: #c0d0e8; font-size: 0.8rem; }
+    .capability-item .status {
+      display: inline-block;
+      padding: 0.05rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      background: #0a1a0a;
+      color: #7fdfa5;
+      border: 1px solid #1a3a2a;
+      margin-top: 0.2rem;
+    }
+    .capability-item .status.warn {
+      background: #1a1a0a;
+      color: #e8d080;
+      border-color: #3a3a1a;
+    }
+
+    /* ----- REGION STATUS (clickable) ----- */
+    .region-status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 1.5rem 0 2rem 0;
+      padding: 1.2rem;
+      background: #0a101a;
+      border-radius: 16px;
+      border: 1px solid #1a2a2a;
+    }
+    .region-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #0d161a;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #1a2a2a;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .region-item:hover {
+      border-color: #2a5a4a;
+      box-shadow: 0 0 20px rgba(80,200,120,0.05);
+    }
+    .region-item img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #1a2a2a;
+    }
+    .region-item .region-name { color: #b0c8e0; font-size: 0.8rem; font-weight: 500; }
+    .region-item .region-status-badge {
+      display: inline-block;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 0.2rem;
+    }
+    .region-status-badge.safe {
+      background: #0a1a0a; color: #7fdfa5; border: 1px solid #1a3a2a;
+    }
+    .region-status-badge.fixing {
+      background: #1a140a; color: #e8d080; border: 1px solid #3a3a1a;
+    }
+    .region-status-badge.unknown {
+      background: #1a0a0a; color: #e09090; border: 1px solid #3a1a1a;
+    }
+
+    /* ----- CODE BLOCKS ----- */
+    .code-block {
+      background: #090d15;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.2rem 0 1.8rem 0;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      border: 1px solid #1a2a2a;
+      color: #d0e8e0;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .code-block .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: #0f1a1f;
+      border: 1px solid #1a3a2a;
+      color: #7fdfa5;
+      border-radius: 8px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .code-block .copy-btn:hover {
+      background: #1a3a2a;
+    }
+    .code-block .comment { color: #5a8a7a; }
+    .code-block .keyword { color: #8fcfb0; }
+    .code-block .func { color: #7daadf; }
+    .code-block .num { color: #e8c090; }
+    .code-block .str { color: #9fcf9f; }
+    .code-block .green { color: #7fdfa5; }
+    .code-block .red { color: #e09090; }
+    .code-block .yellow { color: #e8d080; }
+
+    /* ----- CONTACT / TEAM ----- */
+    .team-section {
+      background: #0a101a;
+      border: 1px solid #1a2a2a;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0 2rem 0;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+    .team-grid a {
+      color: #8fdfb0;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      background: #0d161a;
+      border: 1px solid #1a2a2a;
+      transition: 0.2s;
+    }
+    .team-grid a:hover {
+      background: #1a3a2a;
+      border-color: #2a5a4a;
+      text-decoration: none;
+    }
+    .team-grid a img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .team-grid .label {
+      color: #6a9a7a;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      background: transparent;
+      border: none;
+      padding-left: 0;
+    }
+    .contact-dev {
+      background: #0f1a1f;
+      border: 2px solid #2a5a4a;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0 2rem 0;
+      text-align: center;
+    }
+    .contact-dev .big-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #7fdfa5;
+      background: #0d161a;
+      padding: 0.8rem 2.5rem;
+      border-radius: 60px;
+      border: 2px solid #2a5a4a;
+      font-family: 'JetBrains Mono', monospace;
+      transition: 0.3s;
+    }
+    .contact-dev .big-link:hover {
+      background: #1a3a2a;
+      border-color: #4a9a7a;
+      text-decoration: none;
+      box-shadow: 0 0 30px rgba(80,200,120,0.15);
+    }
+    .contact-dev .big-link img { width: 36px; height: 36px; }
+    .contact-dev .sub-label {
+      color: #6a9a7a;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ----- BACK TO TOP ----- */
+    .back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #0f1a1f;
+      border: 1px solid #2a5a4a;
+      color: #7fdfa5;
+      padding: 0.6rem 0.9rem;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      background: #1a3a2a;
+    }
+
+    /* ----- SEARCH ----- */
+    .search-box {
+      background: #0d161a;
+      border: 1px solid #1a2a2a;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 280px;
+    }
+    .search-box input {
+      background: transparent;
+      border: none;
+      color: #d6dee8;
+      font-size: 0.8rem;
+      outline: none;
+      width: 100%;
+    }
+    .search-box input::placeholder { color: #5a8a7a; }
+    .search-box i { color: #5a8a7a; }
+
+    /* ----- FOOTER ----- */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1a2a22;
+      font-size: 0.8rem;
+      color: #5a8a7a;
+      text-align: right;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-note .footer-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .footer-note .footer-links a {
+      color: #5a8a7a;
+      font-size: 0.75rem;
+    }
+    .footer-note .footer-links a:hover { color: #7fdfa5; }
+
+    /* ===== REGION MODAL - FULL OVERLAY ===== */
+    .region-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.25s ease;
+    }
+    .region-modal.open {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .region-modal-box {
+      background: #0f1a1f;
+      border: 2px solid #2a5a4a;
+      border-radius: 28px;
+      padding: 2.8rem 3rem;
+      max-width: 640px;
+      width: 92%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+      position: relative;
+      color: #d6dee8;
+      margin: auto;
+    }
+    .region-modal-box .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2.2rem;
+      cursor: pointer;
+      color: #5a8a7a;
+      transition: 0.2s;
+      line-height: 1;
+    }
+    .region-modal-box .close-modal:hover { color: #7fdfa5; transform: rotate(90deg); }
+    .region-modal-box h2 {
+      margin-top: 0;
+      border-left: none;
+      padding-left: 0;
+      color: #a0dfc0;
+      font-size: 2rem;
+    }
+    .region-modal-box .region-detail {
+      margin: 1.2rem 0;
+    }
+    .region-modal-box .region-detail strong {
+      color: #7fdfa5;
+      font-weight: 600;
+    }
+    .region-modal-box .status-big {
+      display: inline-block;
+      padding: 0.3rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+    .region-modal-box .status-big.safe {
+      background: #0a1a0a; color: #7fdfa5; border: 2px solid #1a3a2a;
+    }
+    .region-modal-box .status-big.fixing {
+      background: #1a140a; color: #e8d080; border: 2px solid #3a3a1a;
+    }
+    .region-modal-box .status-big.unknown {
+      background: #1a0a0a; color: #e09090; border: 2px solid #3a1a1a;
+    }
+    .region-modal-box .modal-extra {
+      border-top: 1px solid #1a2a2a;
+      padding-top: 1.2rem;
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      color: #c8d6e8;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 760px) {
+      body { padding: 1rem 0.8rem; }
+      .container { padding: 1.5rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.8rem; }
+      .nav-links { display: none; width: 100%; flex-direction: column; gap: 0.5rem; padding-top: 0.8rem; }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+      .top-nav { flex-wrap: wrap; padding: 0.8rem 1rem; }
+      .search-box { max-width: 100%; }
+      .contact-dev .big-link { font-size: 1.2rem; padding: 0.6rem 1.2rem; }
+      .region-item img { width: 24px; height: 24px; }
+      .region-modal-box { padding: 1.8rem; }
+      .region-modal-box h2 { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .capability-grid { grid-template-columns: 1fr; }
+      .region-status { gap: 0.8rem; padding: 0.8rem; }
+      .region-modal-box { padding: 1.2rem; }
+    }
+    /* light mode completely removed */
+  </style>
 </head>
 <body>
-<div class="container">
 
-    <h1 class="glow-text">
-        libanogs.so · bypass
-        <small>GARENA / KOREA / VNG / GLOBAL</small>
-        <span class="version-tag">v1.x.56</span>
-        <span class="dev-brand">PRINCESS · CESS MOD</span>
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
+
+<div class="site-wrapper">
+
+  <!-- STICKY TOP NAV -->
+  <nav class="top-nav" id="topNav">
+    <div class="nav-brand">
+      <i class="fas fa-shield-halved"></i> libanogs.so
+    </div>
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search offsets, functions...">
+    </div>
+    <div class="nav-hamburger" id="navHamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#overview">Overview</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#dispatcher">Dispatcher</a>
+      <a href="#hooks">Hooks</a>
+      <a href="#patches">Patches</a>
+      <a href="#network">Network</a>
+      <a href="#contact">Contact</a>
+      <!-- theme toggle removed -->
+    </div>
+  </nav>
+
+  <div class="container" id="mainContainer">
+
+    <!-- HEADER -->
+    <h1>
+      <i class="fas fa-bolt" style="color:#7fdfa5;"></i> libanogs.so · bypass
+      <small>GARENA / KOREA / VNG / GLOBAL</small>
+      <span class="version-tag" style="font-size:0.85rem; background:#0f1a1f; color:#7fdfa5; padding:0.2rem 0.9rem; border-radius:30px; border:1px solid #1a3a2a; margin-left:0.5rem;">v1.x.56</span>
+      <span class="dev-brand" style="font-size:0.85rem; color:#8fdfb0; background:#0d161a; padding:0.2rem 1rem; border-radius:30px; border:1px solid #1a3a2a; margin-left:0.5rem;">PRINCESS · CESS MOD</span>
     </h1>
 
-    <p style="font-size:1.05rem; color:#a8b8d8;">
-        Complete subversion of Tencent's <strong>Anti-Cheat Expert</strong> (ACE)
-        for <strong>Call of Duty: Mobile</strong>. This document details
-        the full hook set, memory patches, and network interception layer implemented
-        against <span class="inline-mono">libanogs.so</span>.
+    <p style="font-size:1.05rem; color:#c8d8ec;">
+      Complete subversion of Tencent's <strong>Anti-Cheat Expert</strong> (ACE)
+      for <strong>Call of Duty: Mobile</strong>. This document details
+      the full hook set, memory patches, and network interception layer implemented
+      against <span class="inline-mono" style="font-family:'JetBrains Mono',monospace; background:#0d161a; padding:0.1rem 0.4rem; border-radius:4px; color:#8fdfb0; font-size:0.85rem; border:1px solid #1a2a22;">libanogs.so</span>.
     </p>
 
-    <div style="margin: 0.5rem 0 1.2rem 0; color: #6fbf8f; font-size: 0.9rem;">
-        <span class="brand-badge">DINZ DELUXE</span>
-        <span class="brand-badge">CDC SUPREMO</span>
-        <span class="brand-badge">CESS DINZ</span>
-        <span style="color: #4a7a5a; margin-left: 0.5rem;">— released by CESS MOD</span>
+    <!-- REGION STATUS (clickable) -->
+    <div class="region-status" id="regionStatus">
+      <div class="region-item" data-region="garena">
+        <img src="https://official.garena.com/sg/v1/config/category_codm.png" alt="Garena" onerror="this.style.display='none'">
+        <span class="region-name">GARENA</span>
+        <span class="region-status-badge safe">✓ SAFE</span>
+      </div>
+      <div class="region-item" data-region="korea">
+        <img src="https://play-lh.googleusercontent.com/gwrdY5_vXOxa0FVi78gTSBYo3W9LeyOzCaHEWZb-dyjRAPgNApkw2yd0gN4fohW96qnoRIsSpLloHHGh4EZhyw=w240-h480" alt="Korea" onerror="this.style.display='none'">
+        <span class="region-name">KOREA</span>
+        <span class="region-status-badge safe">✓ SAFE + BRUTAL</span>
+      </div>
+      <div class="region-item" data-region="vng">
+        <img src="https://play-lh.googleusercontent.com/nAWmbNnwOulhcjMcUZVu8csePMqiwYGVKHBrNpDUIGMs_N8ypm9jg682TnZdlNMjJmQ" alt="VNG" onerror="this.style.display='none'">
+        <span class="region-name">VNG</span>
+        <span class="region-status-badge safe">✓ SAFE</span>
+      </div>
+      <div class="region-item" data-region="global">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.6uK2AbXfgLxXZmGWT8gXWgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Global" onerror="this.style.display='none'">
+        <span class="region-name">GLOBAL</span>
+        <span class="region-status-badge fixing"> FIXING 5-10min IN-GAME/MATCH BAN</span>
+      </div>
     </div>
 
-    <!-- REGION STATUS -->
-    <div class="region-status">
-        <div class="region-item">
-            <img src="https://official.garena.com/sg/v1/config/category_codm.png" alt="Garena" onerror="this.style.display='none'">
-            <span class="region-name">GARENA</span>
-            <span class="region-status-badge safe">✓ SAFE</span>
+    <!-- ===== REGION MODAL - FULL OVERLAY ===== -->
+    <div class="region-modal" id="regionModal">
+      <div class="region-modal-box">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2 id="modalTitle">Region Status</h2>
+        <div id="modalContent">
+          <div class="region-detail"><strong>Status:</strong> <span id="modalStatusBadge" class="status-big safe">SAFE</span></div>
+          <div class="region-detail"><strong>Details:</strong> <span id="modalDetails">Full bypass active, no bans reported.</span></div>
+          <div class="modal-extra" id="modalExtra"></div>
         </div>
-        <div class="region-item">
-            <img src="https://play-lh.googleusercontent.com/gwrdY5_vXOxa0FVi78gTSBYo3W9LeyOzCaHEWZb-dyjRAPgNApkw2yd0gN4fohW96qnoRIsSpLloHHGh4EZhyw=w240-h480" alt="Korea" onerror="this.style.display='none'">
-            <span class="region-name">KOREA</span>
-            <span class="region-status-badge safe">✓ SAFE + BRUTAL</span>
-        </div>
-        <div class="region-item">
-            <img src="https://play-lh.googleusercontent.com/nAWmbNnwOulhcjMcUZVu8csePMqiwYGVKHBrNpDUIGMs_N8ypm9jg682TnZdlNMjJmQ" alt="VNG" onerror="this.style.display='none'">
-            <span class="region-name">VNG</span>
-            <span class="region-status-badge safe">✓ SAFE</span>
-        </div>
-        <div class="region-item">
-            <img src="https://tse1.mm.bing.net/th/id/OIP.6uK2AbXfgLxXZmGWT8gXWgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Global" onerror="this.style.display='none'">
-            <span class="region-name">GLOBAL</span>
-            <span class="region-status-badge fixing"> FIXING 5-10min IN-GAME/MATCH BAN</span>
-        </div>
+      </div>
     </div>
 
-    <!-- CONTACT DEVELOPER -->
-    <div class="contact-dev">
-        <span class="sub-label">📨 Contact Developer</span>
-        <a href="https://telegram.me/Cesssmod" target="_blank" class="big-link">
-            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-            @Cesssmod
-        </a>
-        <p style="margin-top: 0.6rem; font-size: 0.8rem; color: #5a7a6a;">
-            Telegram · PRINCESS · CESS MOD
-        </p>
+    <!-- CONTACT DEV -->
+    <div class="contact-dev" id="contact">
+      <span class="sub-label"><i class="fas fa-paper-plane"></i> Contact Developer</span>
+      <a href="https://telegram.me/Cesssmod" target="_blank" class="big-link">
+        <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+        @Cesssmod
+      </a>
+      <p style="margin-top:0.6rem; font-size:0.8rem; color:#5a8a7a;">
+        Telegram · PRINCESS · CESS MOD
+      </p>
     </div>
 
-    <div class="divider"></div>
+    <hr style="border:0; height:1px; background:linear-gradient(90deg,#1a2a2a,#2a4a3a,#1a2a2a); margin:2rem 0;">
 
-    <!-- TEAM & CONTACT -->
-    <h2>Team &amp; Contact</h2>
+    <!-- TEAM SECTION -->
+    <h2 id="team"><i class="fas fa-users"></i> Team &amp; Contact</h2>
     <div class="team-section">
-        <h3>PRINCESS · CESS MOD</h3>
-        <div class="team-grid">
-            <div><span class="label">Main Channel DINZ</span>
-                <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/+yqKSpOFYBH44MTdl
-                </a>
-            </div>
-            <div><span class="label">Backup Main DINZ</span>
-                <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://telegram.me/+uYi4LwT68CQxNmM1
-                </a>
-            </div>
-            <div><span class="label">Free Channel CessDINZ</span>
-                <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/+EtbIvUoG8-UzZjQ1
-                </a>
-            </div>
-            <div><span class="label">Free Users</span>
-                <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://telegram.me/+RoE0_1yvHqpmMGZl
-                </a>
-            </div>
-            <div><span class="label">Backup Channel DINZ</span>
-                <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/+VshqcIhp7atmMzM1
-                </a>
-            </div>
-            <div><span class="label">CESSMOD Public Channel</span>
-                <a href="https://t.me/Cessmod" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/Cessmod
-                </a>
-            </div>
-            <div><span class="label">Product Pricelist DINZ</span>
-                <a href="https://t.me/priceonlymodinj" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/priceonlymodinj
-                </a>
-            </div>
-            <div><span class="label">Buy/Sell CODM/ML Accounts</span>
-                <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://t.me/+wt_UWW6jKXxlMTQ1
-                </a>
-            </div>
-            <div><span class="label">CESS MOD Public Group</span>
-                <a href="https://telegram.me/Cesssdc" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
-                    https://telegram.me/Cesssdc
-                </a>
-            </div>
+      <h3 style="margin-top:0;">PRINCESS · CESS MOD</h3>
+      <div class="team-grid">
+        <div><span class="label">Main Channel DINZ</span>
+          <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+yqKSpOFYBH44MTdl</a>
         </div>
+        <div><span class="label">Backup Main DINZ</span>
+          <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/+uYi4LwT68CQxNmM1</a>
+        </div>
+        <div><span class="label">Free Channel CessDINZ</span>
+          <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+EtbIvUoG8-UzZjQ1</a>
+        </div>
+        <div><span class="label">Free Users</span>
+          <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/+RoE0_1yvHqpmMGZl</a>
+        </div>
+        <div><span class="label">Backup Channel DINZ</span>
+          <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+VshqcIhp7atmMzM1</a>
+        </div>
+        <div><span class="label">CESSMOD Public Channel</span>
+          <a href="https://t.me/Cessmod" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/Cessmod</a>
+        </div>
+        <div><span class="label">Product Pricelist DINZ</span>
+          <a href="https://t.me/priceonlymodinj" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/priceonlymodinj</a>
+        </div>
+        <div><span class="label">Buy/Sell CODM/ML Accounts</span>
+          <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+wt_UWW6jKXxlMTQ1</a>
+        </div>
+        <div><span class="label">CESS MOD Public Group</span>
+          <a href="https://telegram.me/Cesssdc" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/Cesssdc</a>
+        </div>
+      </div>
     </div>
 
-    <div class="divider"></div>
+    <hr style="border:0; height:1px; background:linear-gradient(90deg,#1a2a2a,#2a4a3a,#1a2a2a); margin:2rem 0;">
 
     <!-- OVERVIEW -->
-    <h2>Overview</h2>
-    <p>
-        The bypass intercepts critical functions inside <span class="inline-mono">libanogs.so</span>
-        before they can initialise the scanner, rule interpreter, or TDM reporting pipeline.
-        Memory patches disable kill-switches, block VM generation, and neutralise the
-        periodic scan thread. A secondary network hook layer blocks telemetry and
-        crash reporting domains.
-    </p>
+    <h2 id="overview"><i class="fas fa-bolt"></i> Overview</h2>
+    <p>The bypass intercepts critical functions inside <span class="inline-mono" style="font-family:'JetBrains Mono',monospace; background:#0d161a; padding:0.1rem 0.4rem; border-radius:4px; color:#8fdfb0; font-size:0.85rem; border:1px solid #1a2a22;">libanogs.so</span> before they can initialise the scanner, rule interpreter, or TDM reporting pipeline. Memory patches disable kill-switches, block VM generation, and neutralise the periodic scan thread. A secondary network hook layer blocks telemetry and crash reporting domains.</p>
     <div class="grid-2">
-        <div class="card"><h4><span class="blue-highlight">Hook strategy</span></h4><p>50+ hooks on JNI_OnLoad, rule runner, hook installers, config dispatcher, heartbeat loop, VM generators, and TDM report chain. All hooks return zero/null or skip execution.</p></div>
-        <div class="card"><h4><span class="orange-highlight">Memory hardening</span></h4><p>Over 35 memory patches that zero-out globals, disable pthread_mutex_t locks, block VM generation, and erase detection flags.</p></div>
+      <div class="card"><h4><i class="fas fa-code blue-highlight" style="color:#7daadf;"></i> Hook strategy</h4><p>50+ hooks on JNI_OnLoad, rule runner, hook installers, config dispatcher, heartbeat loop, VM generators, and TDM report chain. All hooks return zero/null or skip execution.</p></div>
+      <div class="card"><h4><i class="fas fa-memory orange-highlight" style="color:#e8c090;"></i> Memory hardening</h4><p>Over 35 memory patches that zero-out globals, disable pthread_mutex_t locks, block VM generation, and erase detection flags.</p></div>
     </div>
 
-    <!-- BYPASS CAPABILITIES -->
-    <h2>Bypass Capabilities</h2>
+    <!-- CAPABILITIES -->
+    <h2 id="capabilities"><i class="fas fa-check-circle"></i> Bypass Capabilities</h2>
     <p>What this bypass can do against ACE anti-cheat:</p>
-
     <div class="capability-grid">
-        <div class="capability-item">
-            <span class="cat">Root &amp; System Integrity</span>
-            <span class="desc">Root detection, Magisk/Zygisk, bootloader unlock, system integrity checks</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Emulator Detection</span>
-            <span class="desc">All emulators (LDPlayer, BlueStacks, Nox, MuMu, etc.) appear as real devices</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Virtual App Detection</span>
-            <span class="desc">Parallel space, dual apps, VirtualXposed, VMOS, other virtual environments</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">X86 Environment</span>
-            <span class="desc">x86 system detection, CPU architecture scanning</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Debugging Tools</span>
-            <span class="desc">Frida, IDA Pro, GDB, ptrace, debugger detection</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Hooking Frameworks</span>
-            <span class="desc">Xposed, Cydia Substrate, TaiChi, LSposed detection</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Auto-Clicker Detection</span>
-            <span class="desc">Touch event analysis, click pattern detection, automation tools</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Memory Scans</span>
-            <span class="desc">Opcode scanning, pattern matching, memory integrity checks</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Periodic Scans</span>
-            <span class="desc">Background scan threads, continuous monitoring</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">TDM Reports</span>
-            <span class="desc">Telemetry Data Model reports sent to Tencent servers</span>
-            <span class="status">✓ BLOCKED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">10-Year Ban Trigger</span>
-            <span class="desc">ESP detection crash, permanent ban activation</span>
-            <span class="status">✓ BLOCKED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Server Communication</span>
-            <span class="desc">GCloud, CrashSight, Bugly, remote config, DNS telemetry</span>
-            <span class="status">✓ BLOCKED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">ACE Heartbeat</span>
-            <span class="desc">Keep-alive signals, ACE health monitoring</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">VM Function Generation</span>
-            <span class="desc">Detection VM code generation (7+ paths blocked)</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Magic Word Triggers</span>
-            <span class="desc">17432605LL detection triggers (7+ locations blocked)</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Main Dispatcher</span>
-            <span class="desc">88+ config cases, 20+ critical detection cases blocked</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">Hook Installation</span>
-            <span class="desc">ACE's own hook mechanisms (ARM64 relocator, trampoline allocator)</span>
-            <span class="status">✓ BYPASSED</span>
-        </div>
-        <div class="capability-item">
-            <span class="cat">5-Minute Crash</span>
-            <span class="desc">report_bk trigger that crashes game at 5 minutes</span>
-            <span class="status">✓ FIXED</span>
-        </div>
+      <div class="capability-item"><span class="cat">Root &amp; System Integrity</span><span class="desc">Root detection, Magisk/Zygisk, bootloader unlock</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Emulator Detection</span><span class="desc">LDPlayer, BlueStacks, Nox, MuMu → real device</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Virtual App Detection</span><span class="desc">Parallel space, VirtualXposed, VMOS</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">X86 Environment</span><span class="desc">CPU architecture scanning</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Debugging Tools</span><span class="desc">Frida, IDA Pro, GDB, ptrace</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Hooking Frameworks</span><span class="desc">Xposed, Cydia, TaiChi, LSposed</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Auto-Clicker Detection</span><span class="desc">Touch event analysis, pattern detection</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Memory Scans</span><span class="desc">Opcode scanning, pattern matching</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Periodic Scans</span><span class="desc">Background scan threads</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">TDM Reports</span><span class="desc">Telemetry Data Model reports</span><span class="status">✓ BLOCKED</span></div>
+      <div class="capability-item"><span class="cat">10-Year Ban Trigger</span><span class="desc">ESP detection crash</span><span class="status">✓ BLOCKED</span></div>
+      <div class="capability-item"><span class="cat">Server Communication</span><span class="desc">GCloud, CrashSight, Bugly, DNS</span><span class="status">✓ BLOCKED</span></div>
+      <div class="capability-item"><span class="cat">ACE Heartbeat</span><span class="desc">Keep-alive signals</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">VM Function Generation</span><span class="desc">Detection VM code generation</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Magic Word Triggers</span><span class="desc">17432605LL detection</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Main Dispatcher</span><span class="desc">88+ config cases, 20+ critical blocked</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">Hook Installation</span><span class="desc">ACE's own hook mechanisms</span><span class="status">✓ BYPASSED</span></div>
+      <div class="capability-item"><span class="cat">5-Minute Crash</span><span class="desc">report_bk trigger</span><span class="status">✓ FIXED</span></div>
     </div>
 
-    <div class="warning-box">
-        <strong>⚠️ Report Ban Not Confirmed</strong><br>
-        While TDM reports are blocked from being created and submitted, server-side detection
-        based on gameplay patterns or match data may still trigger bans. This bypass has not
-        been fully tested against all server-side heuristics. Use at your own risk.
+    <div style="background:#1a140a; border:1px solid #3a3a1a; border-radius:12px; padding:1rem 1.5rem; margin:1rem 0 1.5rem 0; color:#e8d080;">
+      <strong>⚠️ Report Ban Not Confirmed</strong><br>
+      While TDM reports are blocked from being created and submitted, server-side detection based on gameplay patterns or match data may still trigger bans. This bypass has not been fully tested against all server-side heuristics. Use at your own risk.
     </div>
 
-    <!-- ARCHITECTURE DIAGRAM -->
-    <h2>Control flow · boot sequence</h2>
-    <div class="code-block" style="background:#080c14; border-color:#1a2a2a;">
-        <pre style="margin:0; white-space:pre-wrap; color:#b0d0c0;">ACE boot sequence
+    <!-- CONTROL FLOW -->
+    <h2><i class="fas fa-diagram-project"></i> Control flow · boot sequence</h2>
+    <div class="code-block">
+      <pre style="margin:0; white-space:pre-wrap; color:#d0e8e0;">ACE boot sequence
     │
     ├── JNI_OnLoad (0x1CBB30) ── <span class="red">blocked</span>
     ├── scanner registry (0x2155B4, 0x276164) ── <span class="red">nullified</span>
@@ -760,16 +890,11 @@
     └── periodic scan (0x415CDC) ── <span class="red">immediate exit</span></pre>
     </div>
 
-    <!-- MAIN DISPATCHER EXPLANATION -->
-    <h2>Main Dispatcher · 0x1B5D90</h2>
-    <p>
-        The central configuration dispatcher handles <strong>88+ different cases</strong> that control
-        every aspect of the anti-cheat. This function is the backbone of ACE's runtime behaviour.
-        The bypass blocks <strong>20+ critical cases</strong> that would otherwise trigger detection,
-        kill paths, or telemetry.
-    </p>
-    <div class="code-block" style="background:#080c14; border-color:#1a2a2a;">
-        <pre style="margin:0; white-space:pre-wrap; color:#b0d0c0;"><span class="comment">// Hooked_1B5D90 - Central dispatcher with 88+ cases</span>
+    <!-- DISPATCHER -->
+    <h2 id="dispatcher"><i class="fas fa-sliders-h"></i> Main Dispatcher · 0x1B5D90</h2>
+    <p>The central configuration dispatcher handles <strong>88+ different cases</strong> that control every aspect of the anti-cheat. The bypass blocks <strong>20+ critical cases</strong> that would otherwise trigger detection, kill paths, or telemetry.</p>
+    <div class="code-block">
+      <pre style="margin:0; white-space:pre-wrap; color:#d0e8e0;"><span class="comment">// Hooked_1B5D90 - Central dispatcher with 88+ cases</span>
 <span class="yellow">Case 8</span>  → Network/connection configuration <span class="red">BLOCKED</span>
 <span class="yellow">Case 10</span> → Emulator detection <span class="red">BLOCKED</span>
 <span class="yellow">Case 14</span> → Version reporting <span class="red">BLOCKED</span>
@@ -782,260 +907,179 @@
 <span class="yellow">Case 75</span> → IPC/socket handler <span class="red">BLOCKED</span></pre>
     </div>
 
-    <!-- HOOKS TABLE - Truncated for length -->
-    <h2>Hooked functions · libanogs.so</h2>
-    <p style="font-size:0.9rem; color:#7a8a9a; margin-bottom:1.5rem;">
-        <span class="threat-badge">Threat</span> = what ACE tries to do with this function<br>
-        <span class="fix-badge">Fix</span> = how the bypass neutralizes it
+    <!-- HOOKS SECTION -->
+    <h2 id="hooks"><i class="fas fa-anchor"></i> Hooked functions · libanogs.so</h2>
+    <p style="font-size:0.9rem; color:#a0b8d0; margin-bottom:1.5rem;">
+      <span class="threat-badge">Threat</span> = what ACE tries to do with this function &nbsp; <span class="fix-badge">Fix</span> = how the bypass neutralizes it
     </p>
 
-    <h3>JNI &amp; Boot Initialization</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x1CBB30</span></td>
-                <td>JNI_OnLoad</td>
-                <td><span class="threat-badge">Threat</span> ACE initializes entire anti-cheat engine here</td>
-                <td><span class="fix-badge">Fix</span> Hook returns immediately — ACE never starts</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x4DDEB0</span></td>
-                <td>JNI class name decryption</td>
-                <td><span class="threat-badge">Threat</span> ACE decrypts internal class names for detection</td>
-                <td><span class="fix-badge">Fix</span> Hook returns NULL — ACE can't find its own classes</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x514538</span></td>
-                <td>JNI init flag</td>
-                <td><span class="threat-badge">Threat</span> ACE checks if JNI environment is ready</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — ACE thinks JNI never initialized</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x550300</span></td>
-                <td>Global init</td>
-                <td><span class="threat-badge">Threat</span> ACE global state initialization</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — global state stays uninitialized</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x52BE70</span></td>
-                <td>Global init</td>
-                <td><span class="threat-badge">Threat</span> Secondary global state for ACE</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — keeps ACE in broken state</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Accordion: JNI & Boot -->
+    <div class="accordion">
+      <div class="accordion-header open" data-target="accJNI"><span><i class="fas fa-rocket"></i> JNI &amp; Boot Initialization</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-body open" id="accJNI">
+        <div class="accordion-body-inner">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+              <tbody>
+                <tr><td><span class="offset">0x1CBB30</span></td><td>JNI_OnLoad</td><td><span class="threat-badge">Threat</span> ACE initializes entire anti-cheat engine here</td><td><span class="fix-badge">Fix</span> Hook returns immediately — ACE never starts</td></tr>
+                <tr><td><span class="offset">0x4DDEB0</span></td><td>JNI class name decryption</td><td><span class="threat-badge">Threat</span> ACE decrypts internal class names for detection</td><td><span class="fix-badge">Fix</span> Hook returns NULL — ACE can't find its own classes</td></tr>
+                <tr><td><span class="offset">0x514538</span></td><td>JNI init flag</td><td><span class="threat-badge">Threat</span> ACE checks if JNI environment is ready</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — ACE thinks JNI never initialized</td></tr>
+                <tr><td><span class="offset">0x550300</span></td><td>Global init</td><td><span class="threat-badge">Threat</span> ACE global state initialization</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — global state stays uninitialized</td></tr>
+                <tr><td><span class="offset">0x52BE70</span></td><td>Global init</td><td><span class="threat-badge">Threat</span> Secondary global state for ACE</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — keeps ACE in broken state</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Scanner &amp; Rule Engine</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x2155B4</span></td>
-                <td>Scanner module constructor</td>
-                <td><span class="threat-badge">Threat</span> Creates scanner objects that scan memory for cheats</td>
-                <td><span class="fix-badge">Fix</span> Hook returns 0 — scanner objects never created</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x276164</span></td>
-                <td>Scanner registration caller</td>
-                <td><span class="threat-badge">Threat</span> Registers all detection scanners</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks all registrations — no scanners active</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x30EAF4</span></td>
-                <td>ace_run_scan_rules</td>
-                <td><span class="threat-badge">Threat</span> Executes detection rules against game memory</td>
-                <td><span class="fix-badge">Fix</span> Hook kills the rule interpreter — rules never execute</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x415654</span></td>
-                <td>Rule runner</td>
-                <td><span class="threat-badge">Threat</span> Actually runs individual detection rules</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks execution — detection rules never run</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Accordion: Scanner & Rule -->
+    <div class="accordion">
+      <div class="accordion-header" data-target="accScanner"><span><i class="fas fa-search"></i> Scanner &amp; Rule Engine</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-body" id="accScanner">
+        <div class="accordion-body-inner">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+              <tbody>
+                <tr><td><span class="offset">0x2155B4</span></td><td>Scanner module constructor</td><td><span class="threat-badge">Threat</span> Creates scanner objects that scan memory for cheats</td><td><span class="fix-badge">Fix</span> Hook returns 0 — scanner objects never created</td></tr>
+                <tr><td><span class="offset">0x276164</span></td><td>Scanner registration caller</td><td><span class="threat-badge">Threat</span> Registers all detection scanners</td><td><span class="fix-badge">Fix</span> Hook blocks all registrations — no scanners active</td></tr>
+                <tr><td><span class="offset">0x30EAF4</span></td><td>ace_run_scan_rules</td><td><span class="threat-badge">Threat</span> Executes detection rules against game memory</td><td><span class="fix-badge">Fix</span> Hook kills the rule interpreter — rules never execute</td></tr>
+                <tr><td><span class="offset">0x415654</span></td><td>Rule runner</td><td><span class="threat-badge">Threat</span> Actually runs individual detection rules</td><td><span class="fix-badge">Fix</span> Hook blocks execution — detection rules never run</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Hook Installation Prevention</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x3C6650</span></td>
-                <td>ARM64 instruction relocator</td>
-                <td><span class="threat-badge">Threat</span> ACE uses this to install its own hooks</td>
-                <td><span class="fix-badge">Fix</span> Hook prevents hook installation — ACE can't hook anything</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x44AACC</span></td>
-                <td>Inline jump writer</td>
-                <td><span class="threat-badge">Threat</span> Writes inline jumps for ACE hooks</td>
-                <td><span class="fix-badge">Fix</span> Hook returns false — no jumps get written</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x44DCB4</span></td>
-                <td>Type-12 hook installer</td>
-                <td><span class="threat-badge">Threat</span> Installs specific type of ACE hook</td>
-                <td><span class="fix-badge">Fix</span> Hook returns 0 — this hook type never installs</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x44D4DC</span></td>
-                <td>Trampoline allocator</td>
-                <td><span class="threat-badge">Threat</span> Allocates memory for hook trampolines</td>
-                <td><span class="fix-badge">Fix</span> Hook returns 0 — no trampoline memory allocated</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Accordion: Hook Prevention -->
+    <div class="accordion">
+      <div class="accordion-header" data-target="accHookPrev"><span><i class="fas fa-ban"></i> Hook Installation Prevention</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-body" id="accHookPrev">
+        <div class="accordion-body-inner">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+              <tbody>
+                <tr><td><span class="offset">0x3C6650</span></td><td>ARM64 instruction relocator</td><td><span class="threat-badge">Threat</span> ACE uses this to install its own hooks</td><td><span class="fix-badge">Fix</span> Hook prevents hook installation — ACE can't hook anything</td></tr>
+                <tr><td><span class="offset">0x44AACC</span></td><td>Inline jump writer</td><td><span class="threat-badge">Threat</span> Writes inline jumps for ACE hooks</td><td><span class="fix-badge">Fix</span> Hook returns false — no jumps get written</td></tr>
+                <tr><td><span class="offset">0x44DCB4</span></td><td>Type-12 hook installer</td><td><span class="threat-badge">Threat</span> Installs specific type of ACE hook</td><td><span class="fix-badge">Fix</span> Hook returns 0 — this hook type never installs</td></tr>
+                <tr><td><span class="offset">0x44D4DC</span></td><td>Trampoline allocator</td><td><span class="threat-badge">Threat</span> Allocates memory for hook trampolines</td><td><span class="fix-badge">Fix</span> Hook returns 0 — no trampoline memory allocated</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Heartbeat Loop (HB Loop) — CRITICAL</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x204AE4</span></td>
-                <td>HB loop start</td>
-                <td><span class="threat-badge">Threat</span> Starts the heartbeat that keeps ACE alive</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — heartbeat never starts</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x204A38</span></td>
-                <td>HB loop end</td>
-                <td><span class="threat-badge">Threat</span> Completes heartbeat cycle, signals ACE is alive</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — ACE appears dead</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x519A90</span></td>
-                <td>HB loop memory block</td>
-                <td><span class="threat-badge">Threat</span> Stores heartbeat state data</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — corrupts heartbeat state</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x5697B0</span></td>
-                <td>HB loop memory block</td>
-                <td><span class="threat-badge">Threat</span> Additional heartbeat state</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — more corruption</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x569798</span></td>
-                <td>HB loop memory block</td>
-                <td><span class="threat-badge">Threat</span> Third heartbeat state variable</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — completely breaks heartbeat</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Accordion: Heartbeat -->
+    <div class="accordion">
+      <div class="accordion-header" data-target="accHB"><span><i class="fas fa-heartbeat"></i> Heartbeat Loop (HB Loop) — CRITICAL</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-body" id="accHB">
+        <div class="accordion-body-inner">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+              <tbody>
+                <tr><td><span class="offset">0x204AE4</span></td><td>HB loop start</td><td><span class="threat-badge">Threat</span> Starts the heartbeat that keeps ACE alive</td><td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — heartbeat never starts</td></tr>
+                <tr><td><span class="offset">0x204A38</span></td><td>HB loop end</td><td><span class="threat-badge">Threat</span> Completes heartbeat cycle, signals ACE is alive</td><td><span class="fix-badge">Fix</span> Hook blocks + memory patch = 0 — ACE appears dead</td></tr>
+                <tr><td><span class="offset">0x519A90</span></td><td>HB loop memory block</td><td><span class="threat-badge">Threat</span> Stores heartbeat state data</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — corrupts heartbeat state</td></tr>
+                <tr><td><span class="offset">0x5697B0</span></td><td>HB loop memory block</td><td><span class="threat-badge">Threat</span> Additional heartbeat state</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — more corruption</td></tr>
+                <tr><td><span class="offset">0x569798</span></td><td>HB loop memory block</td><td><span class="threat-badge">Threat</span> Third heartbeat state variable</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — completely breaks heartbeat</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>TDM Report Chain</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x4B63E4</span></td>
-                <td>ace_create_tdm_report</td>
-                <td><span class="threat-badge">Threat</span> Creates report about suspicious player activity</td>
-                <td><span class="fix-badge">Fix</span> Hook returns NULL — no report created</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x4B65F0</span></td>
-                <td>ace_submit_corereport</td>
-                <td><span class="threat-badge">Threat</span> Submits report to Tencent servers</td>
-                <td><span class="fix-badge">Fix</span> Hook returns NULL — report never sent</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x4B5810</span></td>
-                <td>REMOTECONFIG channel setup</td>
-                <td><span class="threat-badge">Threat</span> Connects to Tencent remote config server</td>
-                <td><span class="fix-badge">Fix</span> Hook returns 0 — no remote connection</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A854</span></td>
-                <td>g_tdm_report_enabled</td>
-                <td><span class="threat-badge">Threat</span> ACE checks if TDM reporting is enabled</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — reporting disabled</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A855</span></td>
-                <td>g_tdm_report_checked</td>
-                <td><span class="threat-badge">Threat</span> ACE tracks if reporting was already checked</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 1 — marks as already checked so ACE skips it</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A858</span></td>
-                <td>3-strike auto-disable</td>
-                <td><span class="threat-badge">Threat</span> ACE auto-disables after 3 detection strikes</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 3 — forces ACE into disabled state</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Accordion: TDM Report -->
+    <div class="accordion">
+      <div class="accordion-header" data-target="accTDM"><span><i class="fas fa-flag"></i> TDM Report Chain</span> <i class="fas fa-chevron-down"></i></div>
+      <div class="accordion-body" id="accTDM">
+        <div class="accordion-body-inner">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
+              <tbody>
+                <tr><td><span class="offset">0x4B63E4</span></td><td>ace_create_tdm_report</td><td><span class="threat-badge">Threat</span> Creates report about suspicious player activity</td><td><span class="fix-badge">Fix</span> Hook returns NULL — no report created</td></tr>
+                <tr><td><span class="offset">0x4B65F0</span></td><td>ace_submit_corereport</td><td><span class="threat-badge">Threat</span> Submits report to Tencent servers</td><td><span class="fix-badge">Fix</span> Hook returns NULL — report never sent</td></tr>
+                <tr><td><span class="offset">0x4B5810</span></td><td>REMOTECONFIG channel setup</td><td><span class="threat-badge">Threat</span> Connects to Tencent remote config server</td><td><span class="fix-badge">Fix</span> Hook returns 0 — no remote connection</td></tr>
+                <tr><td><span class="offset">0x55A854</span></td><td>g_tdm_report_enabled</td><td><span class="threat-badge">Threat</span> ACE checks if TDM reporting is enabled</td><td><span class="fix-badge">Fix</span> Memory patch = 0 — reporting disabled</td></tr>
+                <tr><td><span class="offset">0x55A855</span></td><td>g_tdm_report_checked</td><td><span class="threat-badge">Threat</span> ACE tracks if reporting was already checked</td><td><span class="fix-badge">Fix</span> Memory patch = 1 — marks as already checked so ACE skips it</td></tr>
+                <tr><td><span class="offset">0x55A858</span></td><td>3-strike auto-disable</td><td><span class="threat-badge">Threat</span> ACE auto-disables after 3 detection strikes</td><td><span class="fix-badge">Fix</span> Memory patch = 3 — forces ACE into disabled state</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- MEMORY PATCHES -->
-    <h2>Memory patches · libanogs.so</h2>
-    <table>
+    <h2 id="patches"><i class="fas fa-memory"></i> Memory patches · libanogs.so</h2>
+    <div class="table-wrap">
+      <table>
         <thead><tr><th>Address</th><th>Value</th><th>What this does</th></tr></thead>
         <tbody>
-            <tr><td><span class="offset">0x55A854</span></td><td>0</td><td>Disables TDM reporting globally</td></tr>
-            <tr><td><span class="offset">0x55A855</span></td><td>1</td><td>Marks TDM report check as already done → ACE skips it</td></tr>
-            <tr><td><span class="offset">0x55A858</span></td><td>3</td><td>Forces 3-strike auto-disable → ACE thinks it's already disabled</td></tr>
-            <tr><td><span class="offset">0x550460-0x550488</span></td><td>0</td><td>Erases OB ZIP filenames → ACE can't find them</td></tr>
-            <tr><td><span class="offset">0x550490</span></td><td>1</td><td>Blocks gen_vm_handler.img → VM generation disabled</td></tr>
-            <tr><td><span class="offset">0x514538</span></td><td>0</td><td>Breaks JNI init flag → ACE thinks JNI isn't ready</td></tr>
-            <tr><td><span class="offset">0x550300</span></td><td>0</td><td>Breaks global initialization state</td></tr>
-            <tr><td><span class="offset">0x52BE70</span></td><td>0</td><td>Breaks secondary global init state</td></tr>
-            <tr><td><span class="offset">0x519A90</span></td><td>0</td><td>Corrupts heartbeat loop state → kills HB loop</td></tr>
-            <tr><td><span class="offset">0x5697B0</span></td><td>0</td><td>Corrupts second heartbeat state variable</td></tr>
-            <tr><td><span class="offset">0x569798</span></td><td>0</td><td>Corrupts third heartbeat state variable</td></tr>
-            <tr><td><span class="offset">0x51B670</span></td><td>0</td><td>Kills CASE 1 load block → CASE 1 detection disabled</td></tr>
-            <tr><td><span class="offset">0x55A5D0</span></td><td>0</td><td>Breaks periodic scan load block</td></tr>
-            <tr><td><span class="offset">0x5556E0</span></td><td>0</td><td>Breaks second periodic scan load block</td></tr>
-            <tr><td><span class="offset">0x550B58</span></td><td>0</td><td>Breaks global init state</td></tr>
-            <tr><td><span class="offset">0x55A5C8</span></td><td>0</td><td>Breaks third periodic scan load block</td></tr>
-            <tr><td><span class="offset">0x555798</span></td><td>0</td><td>Breaks fourth periodic scan load block</td></tr>
-            <tr><td><span class="offset">0x555790</span></td><td>0</td><td>Breaks fifth periodic scan load block</td></tr>
-            <tr><td><span class="offset">0x55A930</span></td><td>0</td><td>Breaks pthread_mutex_t for scan synchronization</td></tr>
-            <tr><td><span class="offset">0x55A934</span></td><td>0</td><td>Breaks secondary pthread_mutex_t</td></tr>
-            <tr><td><span class="offset">0x5508D0</span></td><td>0</td><td>Breaks pthread_once initialization block</td></tr>
-            <tr><td><span class="offset">0x550219</span></td><td>0</td><td>Breaks global data load state</td></tr>
-            <tr><td><span class="offset">0x55020C</span></td><td>0</td><td>Breaks global enable flag → ACE thinks it's disabled</td></tr>
-            <tr><td><span class="offset">0x5502F8</span></td><td>0</td><td>Breaks fallback handler → no recovery path</td></tr>
-            <tr><td><span class="offset">0x5508D4</span></td><td>0</td><td>Breaks report_bk global load → 5min crash fixed</td></tr>
+          <tr><td><span class="offset">0x55A854</span></td><td>0</td><td>Disables TDM reporting globally</td></tr>
+          <tr><td><span class="offset">0x55A855</span></td><td>1</td><td>Marks TDM report check as already done → ACE skips it</td></tr>
+          <tr><td><span class="offset">0x55A858</span></td><td>3</td><td>Forces 3-strike auto-disable → ACE thinks it's already disabled</td></tr>
+          <tr><td><span class="offset">0x550460-0x550488</span></td><td>0</td><td>Erases OB ZIP filenames → ACE can't find them</td></tr>
+          <tr><td><span class="offset">0x550490</span></td><td>1</td><td>Blocks gen_vm_handler.img → VM generation disabled</td></tr>
+          <tr><td><span class="offset">0x514538</span></td><td>0</td><td>Breaks JNI init flag → ACE thinks JNI isn't ready</td></tr>
+          <tr><td><span class="offset">0x550300</span></td><td>0</td><td>Breaks global initialization state</td></tr>
+          <tr><td><span class="offset">0x52BE70</span></td><td>0</td><td>Breaks secondary global init state</td></tr>
+          <tr><td><span class="offset">0x519A90</span></td><td>0</td><td>Corrupts heartbeat loop state → kills HB loop</td></tr>
+          <tr><td><span class="offset">0x5697B0</span></td><td>0</td><td>Corrupts second heartbeat state variable</td></tr>
+          <tr><td><span class="offset">0x569798</span></td><td>0</td><td>Corrupts third heartbeat state variable</td></tr>
+          <tr><td><span class="offset">0x51B670</span></td><td>0</td><td>Kills CASE 1 load block → CASE 1 detection disabled</td></tr>
+          <tr><td><span class="offset">0x55A5D0</span></td><td>0</td><td>Breaks periodic scan load block</td></tr>
+          <tr><td><span class="offset">0x5556E0</span></td><td>0</td><td>Breaks second periodic scan load block</td></tr>
+          <tr><td><span class="offset">0x550B58</span></td><td>0</td><td>Breaks global init state</td></tr>
+          <tr><td><span class="offset">0x55A5C8</span></td><td>0</td><td>Breaks third periodic scan load block</td></tr>
+          <tr><td><span class="offset">0x555798</span></td><td>0</td><td>Breaks fourth periodic scan load block</td></tr>
+          <tr><td><span class="offset">0x555790</span></td><td>0</td><td>Breaks fifth periodic scan load block</td></tr>
+          <tr><td><span class="offset">0x55A930</span></td><td>0</td><td>Breaks pthread_mutex_t for scan synchronization</td></tr>
+          <tr><td><span class="offset">0x55A934</span></td><td>0</td><td>Breaks secondary pthread_mutex_t</td></tr>
+          <tr><td><span class="offset">0x5508D0</span></td><td>0</td><td>Breaks pthread_once initialization block</td></tr>
+          <tr><td><span class="offset">0x550219</span></td><td>0</td><td>Breaks global data load state</td></tr>
+          <tr><td><span class="offset">0x55020C</span></td><td>0</td><td>Breaks global enable flag → ACE thinks it's disabled</td></tr>
+          <tr><td><span class="offset">0x5502F8</span></td><td>0</td><td>Breaks fallback handler → no recovery path</td></tr>
+          <tr><td><span class="offset">0x5508D4</span></td><td>0</td><td>Breaks report_bk global load → 5min crash fixed</td></tr>
         </tbody>
-    </table>
+      </table>
+    </div>
 
-    <!-- NETWORK HOOK LAYER -->
-    <h2>Network interception · libc &amp; curl</h2>
-    <p>
-        A secondary layer intercepts all network I/O to block telemetry, crash reporting,
-        and domain-based kill switches. DNS and socket functions redirect blocked
-        hosts to loopback.
-    </p>
-
-    <table>
+    <!-- NETWORK -->
+    <h2 id="network"><i class="fas fa-network-wired"></i> Network interception · libc &amp; curl</h2>
+    <p>A secondary layer intercepts all network I/O to block telemetry, crash reporting, and domain-based kill switches. DNS and socket functions redirect blocked hosts to loopback.</p>
+    <div class="table-wrap">
+      <table>
         <thead><tr><th>Function</th><th>Library</th><th>Interception strategy</th></tr></thead>
         <tbody>
-            <tr><td>socket</td><td>libc.so</td><td>Passthrough; used as dependency for other hooks</td></tr>
-            <tr><td>connect</td><td>libc.so</td><td>Redirects to 127.0.0.1 when REDIRECT_FLAG is set</td></tr>
-            <tr><td>inet_pton</td><td>libc.so</td><td>Returns loopback for blocked IP strings</td></tr>
-            <tr><td>getaddrinfo</td><td>libc.so</td><td>Fakes addrinfo with loopback for blocked nodes</td></tr>
-            <tr><td>gethostbyaddr</td><td>libc.so</td><td>Redirects host entry if name is blocked</td></tr>
-            <tr><td>gethostbyname</td><td>libc.so</td><td>Returns loopback for blocked domains</td></tr>
-            <tr><td>gethostbyname2</td><td>libc.so</td><td>Supports AF_INET/AF_INET6 loopback redirect</td></tr>
-            <tr><td>sendto / recvfrom</td><td>libc.so</td><td>Block IP-based destinations</td></tr>
-            <tr><td>send / recv</td><td>libc.so</td><td>Fake success on redirected connections</td></tr>
-            <tr><td>read / write</td><td>libc.so</td><td>Passthrough</td></tr>
-            <tr><td>accept / accept4</td><td>libc.so</td><td>Passthrough</td></tr>
-            <tr><td>socketpair</td><td>libc.so</td><td>Passthrough</td></tr>
-            <tr><td>ioctl</td><td>libc.so</td><td>Passthrough</td></tr>
-            <tr><td>curl_easy_init / curl_easy_setopt</td><td>libcurl.so</td><td>Intercept CURLOPT_URL, replace blocked URLs</td></tr>
+          <tr><td>socket</td><td>libc.so</td><td>Passthrough; used as dependency for other hooks</td></tr>
+          <tr><td>connect</td><td>libc.so</td><td>Redirects to 127.0.0.1 when REDIRECT_FLAG is set</td></tr>
+          <tr><td>inet_pton</td><td>libc.so</td><td>Returns loopback for blocked IP strings</td></tr>
+          <tr><td>getaddrinfo</td><td>libc.so</td><td>Fakes addrinfo with loopback for blocked nodes</td></tr>
+          <tr><td>gethostbyaddr</td><td>libc.so</td><td>Redirects host entry if name is blocked</td></tr>
+          <tr><td>gethostbyname</td><td>libc.so</td><td>Returns loopback for blocked domains</td></tr>
+          <tr><td>gethostbyname2</td><td>libc.so</td><td>Supports AF_INET/AF_INET6 loopback redirect</td></tr>
+          <tr><td>sendto / recvfrom</td><td>libc.so</td><td>Block IP-based destinations</td></tr>
+          <tr><td>send / recv</td><td>libc.so</td><td>Fake success on redirected connections</td></tr>
+          <tr><td>read / write</td><td>libc.so</td><td>Passthrough</td></tr>
+          <tr><td>accept / accept4</td><td>libc.so</td><td>Passthrough</td></tr>
+          <tr><td>socketpair</td><td>libc.so</td><td>Passthrough</td></tr>
+          <tr><td>ioctl</td><td>libc.so</td><td>Passthrough</td></tr>
+          <tr><td>curl_easy_init / curl_easy_setopt</td><td>libcurl.so</td><td>Intercept CURLOPT_URL, replace blocked URLs</td></tr>
         </tbody>
-    </table>
+      </table>
+    </div>
 
-    <h3>Blocklist (excerpt)</h3>
-    <p>
-        The bypass maintains a blocklist of over 200 domains and IPs associated with
-        Tencent's telemetry, crash reporting, and anti-cheat infrastructure.
-    </p>
-    <div class="code-block" style="max-height:180px; overflow-y:auto;">
-        <pre style="margin:0; color:#8a9fc9;">"glcs.listdl.com", "dl.tomjson.com", "intl.acekeeper.anticheatexpert.com",
+    <h3>Blocklist (excerpt) — fully visible</h3>
+    <div class="code-block" style="background:#0c141c; border-color:#1a3a2a;">
+      <pre style="margin:0; color:#d0e8e0; font-size:0.8rem; line-height:1.7;">"glcs.listdl.com", "dl.tomjson.com", "intl.acekeeper.anticheatexpert.com",
 "android.crashsight.wetest.net", "cloud.gsdk.proximabeta.com",
 "cs.mbgame.gamesafe.qq.com", "anticheatexpert.com", "crashsight.qq.com",
 "tencent.com", "gcloud.com", "qq.com", "garena-call-of-duty.firebaseio.com",
@@ -1048,15 +1092,10 @@
     </div>
 
     <!-- IMPLEMENTATION -->
-    <h2>Implementation notes</h2>
-    <p>
-        Hooks are installed via <span class="inline-mono">Dobby</span> at runtime.
-        Each hook uses a trampoline to preserve original behaviour where needed.
-        The <span class="inline-mono">REDIRECT_FLAG</span> coordinates between
-        DNS spoofing and connect-time redirection.
-    </p>
+    <h2><i class="fas fa-code"></i> Implementation notes</h2>
+    <p>Hooks are installed via <span class="inline-mono" style="font-family:'JetBrains Mono',monospace; background:#0d161a; padding:0.1rem 0.4rem; border-radius:4px; color:#8fdfb0; font-size:0.85rem; border:1px solid #1a2a22;">Dobby</span> at runtime. Each hook uses a trampoline to preserve original behaviour where needed. The <span class="inline-mono" style="font-family:'JetBrains Mono',monospace; background:#0d161a; padding:0.1rem 0.4rem; border-radius:4px; color:#8fdfb0; font-size:0.85rem; border:1px solid #1a2a22;">REDIRECT_FLAG</span> coordinates between DNS spoofing and connect-time redirection.</p>
     <div class="code-block">
-        <pre style="margin:0;"><span class="comment">// gethostbyname hook — redirect blocked domains to 127.0.0.1</span>
+      <pre style="margin:0;"><span class="comment">// gethostbyname hook — redirect blocked domains to 127.0.0.1</span>
 <span class="keyword">struct</span> hostent* hookedGetHostByName(<span class="keyword">const char</span> *name) {
     <span class="keyword">if</span> (name && is_blocked(name)) {
         <span class="keyword">static</span> <span class="keyword">struct</span> hostent redirected_host;
@@ -1069,11 +1108,179 @@
 }</pre>
     </div>
 
-    <div class="divider"></div>
+    <!-- FOOTER -->
     <div class="footer-note">
-        IDA Pro 9.0 · libanogs.so · CODM Garena v1.x.56 · bypass v1.0<br>
-        <span style="color: #5a7a6a;">PRINCESS · CESS MOD · DINZ DELUXE · CDC SUPREMO</span>
+      <span>IDA Pro 9.0 · libanogs.so · CODM Garena v1.x.56 · bypass v1.0</span>
+      <span class="footer-links">
+        <a href="#"><i class="fas fa-download"></i> PDF</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#"><i class="fas fa-share-alt"></i> Share</a>
+      </span>
     </div>
-</div>
+
+  </div> <!-- end container -->
+</div> <!-- end site-wrapper -->
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+  (function() {
+    // ----- ACCORDION -----
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', function() {
+        const targetId = this.dataset.target;
+        const body = document.getElementById(targetId);
+        if (body) {
+          body.classList.toggle('open');
+          this.classList.toggle('open');
+        }
+      });
+    });
+
+    // ----- MOBILE HAMBURGER -----
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+      });
+      document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && e.target !== hamburger) {
+          navLinks.classList.remove('open');
+        }
+      });
+    }
+
+    // ----- SCROLL PROGRESS -----
+    const progressBar = document.getElementById('scrollProgressBar');
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+
+      const backBtn = document.getElementById('backTopBtn');
+      if (scrollTop > 400) {
+        backBtn.classList.add('visible');
+      } else {
+        backBtn.classList.remove('visible');
+      }
+    });
+
+    // ----- BACK TO TOP -----
+    document.getElementById('backTopBtn').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ----- SEARCH (filter tables) -----
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const tables = document.querySelectorAll('.table-wrap table');
+        tables.forEach(table => {
+          const rows = table.querySelectorAll('tbody tr');
+          rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+          });
+        });
+        const capItems = document.querySelectorAll('.capability-item');
+        capItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+
+    // ===== REGION MODAL - FULL OVERLAY =====
+    const modal = document.getElementById('regionModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalStatusBadge = document.getElementById('modalStatusBadge');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalExtra = document.getElementById('modalExtra');
+
+    const regionData = {
+      garena: {
+        title: 'GARENA',
+        status: 'safe',
+        statusLabel: '✓ SAFE',
+        details: 'Full bypass active. All ACE hooks are blocked. TDM reports are disabled. No bans reported after extensive testing.',
+        extra: ' Garena variant uses standard ACE. All 50+ hooks and 35+ memory patches are fully effective. 100% safe for ranked and public matches.'
+      },
+      korea: {
+        title: 'KOREA',
+        status: 'safe',
+        statusLabel: '✓ SAFE + BRUTAL',
+        details: 'Full bypass active with BRUTAL mode. All ACE hooks blocked. TDM reports disabled. No bans reported.',
+        extra: ' BRUTAL mode enables aggressive memory manipulation and extra anti-debug patches. Supports all Korean ACE variants with zero bans. Works even on the strictest Korean anti-cheat.'
+      },
+      vng: {
+        title: 'VNG',
+        status: 'safe',
+        statusLabel: '✓ SAFE',
+        details: 'Full bypass active. All ACE hooks blocked. TDM reports disabled. No bans reported on VNG servers.',
+        extra: '🇻🇳 VNG version uses slightly modified ACE. All patches and hooks are confirmed working with no detection. Safe for all game modes.'
+      },
+      global: {
+        title: 'GLOBAL',
+        status: 'fixing',
+        statusLabel: ' FIXING 5-10min',
+        details: '⚠️ Global version currently triggers a ban within 5-10 minutes of in-game activity. The bypass is partially working but ACE Global has additional server-side heuristics.',
+        extra: '🔧 We are actively investigating the Global ban trigger. Preliminary analysis shows a server-side pattern detection that activates after 5-10 minutes of match time. The game sends a "heartbeat" packet that differs from other regions. We are working on a fix. Meanwhile, Garena, Korea, and VNG are fully safe. Check back for updates.'
+      }
+    };
+
+    document.querySelectorAll('.region-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const key = this.dataset.region;
+        const data = regionData[key];
+        if (!data) return;
+
+        modalTitle.textContent = data.title;
+        modalStatusBadge.textContent = data.statusLabel;
+        modalStatusBadge.className = 'status-big ' + data.status;
+        modalDetails.textContent = data.details;
+        modalExtra.innerHTML = data.extra;
+
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModalFunc() {
+      modal.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModalFunc();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModalFunc();
+    });
+
+    // ----- SMOOTH SCROLL FOR NAV LINKS -----
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          navLinks.classList.remove('open');
+        }
+      });
+    });
+
+  })();
+</script>
+
 </body>
 </html>
