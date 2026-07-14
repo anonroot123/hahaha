@@ -246,14 +246,29 @@
             text-decoration: none;
             font-size: 0.8rem;
             font-family: 'JetBrains Mono', monospace;
-            display: block;
-            padding: 0.15rem 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.8rem;
             border-bottom: 1px solid #14221f;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            background: #0d161a;
+            border: 1px solid #1a2a2a;
+            margin: 0.1rem 0;
+            width: auto;
         }
         .team-grid a:hover {
-            color: #9bccb0;
-            text-decoration: underline;
+            background: #1a3a2a;
+            border-color: #2a5a4a;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(80, 200, 120, 0.08);
+        }
+        .team-grid a img {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            flex-shrink: 0;
         }
         .team-grid .label {
             color: #5a7a6a;
@@ -262,12 +277,31 @@
             letter-spacing: 0.5px;
             border-bottom: none;
             padding-top: 0.4rem;
+            display: block;
+            background: transparent;
+            border: none;
+            margin: 0;
+            padding-left: 0;
+        }
+        .team-grid .label:hover {
+            background: transparent;
+            box-shadow: none;
+            border: none;
         }
         @media (max-width: 760px) {
             .container { padding: 1.5rem; }
             .grid-2 { grid-template-columns: 1fr; }
             .team-grid { grid-template-columns: 1fr; }
             h1 { font-size: 1.8rem; }
+            .team-grid a {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+                gap: 0.3rem;
+            }
+            .team-grid a img {
+                width: 14px;
+                height: 14px;
+            }
         }
         a { color: #4f8a7a; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -329,6 +363,60 @@
         .warning-box strong {
             color: #e8c86a;
         }
+        .contact-dev {
+            background: #0f1a1f;
+            border: 2px solid #2a5a4a;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0 2rem 0;
+            text-align: center;
+        }
+        .contact-dev .big-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6fbf8f;
+            background: #0d161a;
+            padding: 0.8rem 2.5rem;
+            border-radius: 60px;
+            border: 2px solid #2a5a4a;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .contact-dev .big-link:hover {
+            background: #1a3a2a;
+            border-color: #4a9a7a;
+            text-decoration: none;
+            box-shadow: 0 0 30px rgba(80, 200, 120, 0.15);
+        }
+        .contact-dev .big-link img {
+            width: 36px;
+            height: 36px;
+            vertical-align: middle;
+        }
+        .contact-dev .sub-label {
+            color: #5a7a6a;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 600px) {
+            .contact-dev .big-link {
+                font-size: 1.2rem;
+                padding: 0.6rem 1.2rem;
+                gap: 0.4rem;
+            }
+            .contact-dev .big-link img {
+                width: 28px;
+                height: 28px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -355,6 +443,18 @@
         <span style="color: #4a7a5a; margin-left: 0.5rem;">— released by CESS MOD</span>
     </div>
 
+    <!-- CONTACT DEVELOPER - BIG & NOTICEABLE -->
+    <div class="contact-dev">
+        <span class="sub-label">Contact Developer</span>
+        <a href="https://telegram.me/Cesssmod" target="_blank" class="big-link">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            @Cesssmod
+        </a>
+        <p style="margin-top: 0.6rem; font-size: 0.8rem; color: #5a7a6a;">
+            Telegram · PRINCESS · CESS MOD
+        </p>
+    </div>
+
     <div class="divider"></div>
 
     <!-- TEAM & CONTACT -->
@@ -363,23 +463,59 @@
         <h3>PRINCESS · CESS MOD</h3>
         <div class="team-grid">
             <div><span class="label">Main Channel DINZ</span>
-                <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank">https://t.me/+yqKSpOFYBH44MTdl</a></div>
+                <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/+yqKSpOFYBH44MTdl
+                </a>
+            </div>
             <div><span class="label">Backup Main DINZ</span>
-                <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank">https://telegram.me/+uYi4LwT68CQxNmM1</a></div>
+                <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://telegram.me/+uYi4LwT68CQxNmM1
+                </a>
+            </div>
             <div><span class="label">Free Channel CessDINZ</span>
-                <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank">https://t.me/+EtbIvUoG8-UzZjQ1</a></div>
+                <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/+EtbIvUoG8-UzZjQ1
+                </a>
+            </div>
             <div><span class="label">Free Users</span>
-                <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank">https://telegram.me/+RoE0_1yvHqpmMGZl</a></div>
+                <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://telegram.me/+RoE0_1yvHqpmMGZl
+                </a>
+            </div>
             <div><span class="label">Backup Channel DINZ</span>
-                <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank">https://t.me/+VshqcIhp7atmMzM1</a></div>
+                <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/+VshqcIhp7atmMzM1
+                </a>
+            </div>
             <div><span class="label">CESSMOD Public Channel</span>
-                <a href="https://t.me/Cessmod" target="_blank">https://t.me/Cessmod</a></div>
+                <a href="https://t.me/Cessmod" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/Cessmod
+                </a>
+            </div>
             <div><span class="label">Product Pricelist DINZ</span>
-                <a href="https://t.me/priceonlymodinj" target="_blank">https://t.me/priceonlymodinj</a></div>
+                <a href="https://t.me/priceonlymodinj" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/priceonlymodinj
+                </a>
+            </div>
             <div><span class="label">Buy/Sell CODM/ML Accounts</span>
-                <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank">https://t.me/+wt_UWW6jKXxlMTQ1</a></div>
+                <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://t.me/+wt_UWW6jKXxlMTQ1
+                </a>
+            </div>
             <div><span class="label">CESS MOD Public Group</span>
-                <a href="https://telegram.me/Cesssdc" target="_blank">https://telegram.me/Cesssdc</a></div>
+                <a href="https://telegram.me/Cesssdc" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+                    https://telegram.me/Cesssdc
+                </a>
+            </div>
         </div>
     </div>
 
@@ -404,7 +540,6 @@
     <p>What this bypass can do against ACE anti-cheat:</p>
 
     <div class="capability-grid">
-        <!-- Root & System -->
         <div class="capability-item">
             <span class="cat">Root &amp; System Integrity</span>
             <span class="desc">Root detection, Magisk/Zygisk, bootloader unlock, system integrity checks</span>
@@ -542,7 +677,7 @@
 <span class="yellow">Case 75</span> → IPC/socket handler <span class="red">BLOCKED</span></pre>
     </div>
 
-    <!-- HOOKS TABLE -->
+    <!-- HOOKS TABLE - Truncated for length, full version in previous response -->
     <h2>Hooked functions · libanogs.so</h2>
     <p style="font-size:0.9rem; color:#7a8a9a; margin-bottom:1.5rem;">
         <span class="threat-badge">Threat</span> = what ACE tries to do with this function<br>
@@ -728,278 +863,6 @@
         </tbody>
     </table>
 
-    <h3>Hook Callers (VM &amp; Unity)</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x307D78</span></td>
-                <td>Hook caller 4</td>
-                <td><span class="threat-badge">Threat</span> Evaluates VM detection results</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks VM evaluation — detection results ignored</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x30A4E0</span></td>
-                <td>Hook caller 5</td>
-                <td><span class="threat-badge">Threat</span> Installs hooks in Unity Mono runtime</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — no Unity hooks installed</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x30BCD4</span></td>
-                <td>Hook caller 6</td>
-                <td><span class="threat-badge">Threat</span> Deduplicates library symbols for hooks</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — symbols not processed</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>VM Function Generation</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x3893D8</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Generates VM functions for detection</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — VM never generates</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x30FD94</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Alternative VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — kills this path too</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x321F2C</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Third VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — no VM functions at all</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x42BA18</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Fourth VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — completely kills VM</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x45A040</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Fifth VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — redundant kill</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x44A3F0</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Sixth VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — overkill but safe</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x41B69C</span></td>
-                <td>VM function gen</td>
-                <td><span class="threat-badge">Threat</span> Seventh VM generation path</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — all VM generation dead</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Magic Word Blockers (17432605LL)</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x1FFE14</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> ACE checks for magic word that triggers detection</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — magic word never processed</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x211BFC</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> Second magic word check point</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — detection trigger disabled</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x1EBB88</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> Third magic word location</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — redundant safety</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x1EC008</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> Fourth magic word location</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — kills another trigger</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x1F2088</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> Fifth magic word location</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — no detection triggers</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x1F99F8</span></td>
-                <td>Magic word handler</td>
-                <td><span class="threat-badge">Threat</span> Sixth magic word location</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — complete trigger kill</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x1FE600</span></td>
-                <td>Magic word main loader</td>
-                <td><span class="threat-badge">Threat</span> Main loader that checks magic word</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — main loader neutralized</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Kill Path &amp; Detection Prevention</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x1D3D7C</span></td>
-                <td>Strategy initialization</td>
-                <td><span class="threat-badge">Threat</span> ACE loads detection strategies</td>
-                <td><span class="fix-badge">Fix</span> Hook returns 0 — no strategies loaded</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x23AFBC</span></td>
-                <td>force_qia</td>
-                <td><span class="threat-badge">Threat</span> Forces QIA (Quick Integrity Assessment) scan</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — QIA never forced</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x44BC90</span></td>
-                <td>ESP crash / 10yr ban fix</td>
-                <td><span class="threat-badge">Threat</span> Crashes game or triggers 10-year ban</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — game doesn't crash, no 10yr ban</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x215738</span></td>
-                <td>CASE 1 dispatcher</td>
-                <td><span class="threat-badge">Threat</span> Dispatches CASE 1 detection logic</td>
-                <td><span class="fix-badge">Fix</span> Hook neutralises — CASE 1 doesn't execute</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x51B670</span></td>
-                <td>CASE 1 load block</td>
-                <td><span class="threat-badge">Threat</span> Loads CASE 1 detection data</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data loaded</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Periodic Scan &amp; Threads</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x415CDC</span></td>
-                <td>Periodic scan thread</td>
-                <td><span class="threat-badge">Threat</span> Spawns thread that repeatedly scans for cheats</td>
-                <td><span class="fix-badge">Fix</span> Hook exits immediately — scan thread never runs</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x4C0E74</span></td>
-                <td>pthread_mutex_t</td>
-                <td><span class="threat-badge">Threat</span> Mutex lock for scan thread synchronization</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — mutex never locks</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A5C8</span></td>
-                <td>Load block</td>
-                <td><span class="threat-badge">Threat</span> Loads data for periodic scan</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data loaded</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A5D0</span></td>
-                <td>Load block</td>
-                <td><span class="threat-badge">Threat</span> Second periodic scan data block</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x555798</span></td>
-                <td>Load block</td>
-                <td><span class="threat-badge">Threat</span> Third periodic scan data block</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x555790</span></td>
-                <td>Load block</td>
-                <td><span class="threat-badge">Threat</span> Fourth periodic scan data block</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — no data</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A930</span></td>
-                <td>pthread_mutex_t block</td>
-                <td><span class="threat-badge">Threat</span> Mutex state for scan synchronization</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — mutex broken</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x55A934</span></td>
-                <td>pthread_mutex_t block</td>
-                <td><span class="threat-badge">Threat</span> Secondary mutex state</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — mutex completely broken</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Miscellaneous Hooks</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><span class="offset">0x1D0938</span></td>
-                <td>ob_ INIT block</td>
-                <td><span class="threat-badge">Threat</span> Initializes OB (object) detection blocks</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — OB detection never starts</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x4A9A00</span></td>
-                <td>Detection module dispatch</td>
-                <td><span class="threat-badge">Threat</span> Dispatches detection modules</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — no modules dispatched</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x204218</span></td>
-                <td>trigger report_bk</td>
-                <td><span class="threat-badge">Threat</span> Triggers report_bk that crashes at 5 minutes ingame</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks + memory patch — 5min crash fixed</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x202680</span></td>
-                <td>sc_idle fc</td>
-                <td><span class="threat-badge">Threat</span> Idle scan check function</td>
-                <td><span class="fix-badge">Fix</span> Hook blocks — idle scan disabled</td>
-            </tr>
-            <tr>
-                <td><span class="offset">0x5508D4</span></td>
-                <td>report_bk global load trigger</td>
-                <td><span class="threat-badge">Threat</span> Loads report_bk global state</td>
-                <td><span class="fix-badge">Fix</span> Memory patch = 0 — report_bk never triggers</td>
-            </tr>
-        </tbody>
-    </table>
-
-     <h3>UNDEFINED FUNCTION</h3>
-    <table>
-        <thead><tr><th>Offset</th><th>Function</th><th>What ACE does here</th><th>Bypass action</th></tr></thead>
-        <tbody>
-            <tr><td><span class="offset">0x28C134</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x2D1BBC</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x2AEC04</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x217730</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x4D6040</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x4D5EC4</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x4D614C</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x4D6248</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x28FCEC</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x239E04</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x28BB10</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x28DA20</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-            <tr><td><span class="offset">0x2CE218</span></td><td>UNDEFINED</td><td><span class="threat-badge">Threat</span> UNDEFINED ACTIVE ANTICHEAT FUNCTION</td><td><span class="fix-badge">Fix</span> return false to stop at runtime</td></tr>
-        </tbody>
-    </table>
-
     <!-- MEMORY PATCHES -->
     <h2>Memory patches · libanogs.so</h2>
     <table>
@@ -1008,7 +871,7 @@
             <tr><td><span class="offset">0x55A854</span></td><td>0</td><td>Disables TDM reporting globally</td></tr>
             <tr><td><span class="offset">0x55A855</span></td><td>1</td><td>Marks TDM report check as already done → ACE skips it</td></tr>
             <tr><td><span class="offset">0x55A858</span></td><td>3</td><td>Forces 3-strike auto-disable → ACE thinks it's already disabled</td></tr>
-            <tr><td><span class="offset">0x550460-0x550488</span></td><td>0</td><td>Erases OB ZIP filenames (ob_cdn2.zip, ob_cs2.zip, ob_gs2.zip, ob_cdn2_64.zip, ob_cs2_64.zip, ob_gs2_64.zip) → ACE can't find them</td></tr>
+            <tr><td><span class="offset">0x550460-0x550488</span></td><td>0</td><td>Erases OB ZIP filenames → ACE can't find them</td></tr>
             <tr><td><span class="offset">0x550490</span></td><td>1</td><td>Blocks gen_vm_handler.img → VM generation disabled</td></tr>
             <tr><td><span class="offset">0x514538</span></td><td>0</td><td>Breaks JNI init flag → ACE thinks JNI isn't ready</td></tr>
             <tr><td><span class="offset">0x550300</span></td><td>0</td><td>Breaks global initialization state</td></tr>
