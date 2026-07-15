@@ -503,20 +503,36 @@
     .team-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.5rem 2rem;
+      gap: 0.8rem 2rem;
+    }
+    .team-grid .team-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .team-grid .label {
+      color: #6a9a7a;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      padding-left: 0.8rem;
     }
     .team-grid a {
       color: #8fdfb0;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-family: 'JetBrains Mono', monospace;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.3rem 0.8rem;
+      padding: 0.4rem 0.8rem;
       border-radius: 8px;
       background: #0d161a;
       border: 1px solid #1a2a2a;
       transition: 0.2s;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      line-height: 1.4;
     }
     .team-grid a:hover {
       background: #1a3a2a;
@@ -528,15 +544,11 @@
       height: 18px;
       flex-shrink: 0;
     }
-    .team-grid .label {
-      color: #6a9a7a;
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: block;
-      background: transparent;
-      border: none;
-      padding-left: 0;
+    .team-grid a .link-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
     }
     .contact-dev {
       background: #0f1a1f;
@@ -712,7 +724,22 @@
       body { padding: 1rem 0.8rem; }
       .container { padding: 1.5rem; }
       .grid-2 { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr; }
+      .team-grid { 
+        grid-template-columns: 1fr; 
+        gap: 0.8rem;
+      }
+      .team-grid .team-item {
+        width: 100%;
+      }
+      .team-grid a {
+        width: 100%;
+        font-size: 0.7rem;
+        padding: 0.4rem 0.6rem;
+      }
+      .team-grid a .link-text {
+        white-space: normal;
+        word-break: break-all;
+      }
       h1 { font-size: 1.8rem; }
       .nav-links { display: none; width: 100%; flex-direction: column; gap: 0.5rem; padding-top: 0.8rem; }
       .nav-links.open { display: flex; }
@@ -723,11 +750,22 @@
       .region-item img { width: 24px; height: 24px; }
       .region-modal-box { padding: 1.8rem; }
       .region-modal-box h2 { font-size: 1.5rem; }
+      .team-section {
+        padding: 1rem;
+      }
     }
     @media (max-width: 480px) {
       .capability-grid { grid-template-columns: 1fr; }
       .region-status { gap: 0.8rem; padding: 0.8rem; }
       .region-modal-box { padding: 1.2rem; }
+      .team-grid a {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.5rem;
+      }
+      .team-grid a img {
+        width: 14px;
+        height: 14px;
+      }
     }
   </style>
 </head>
@@ -833,32 +871,68 @@
     <div class="team-section">
       <h3 style="margin-top:0;">PRINCESS · CESS MOD</h3>
       <div class="team-grid">
-        <div><span class="label">Main Channel DINZ</span>
-          <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+yqKSpOFYBH44MTdl</a>
+        <div class="team-item">
+          <span class="label">Main Channel DINZ</span>
+          <a href="https://t.me/+yqKSpOFYBH44MTdl" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/+yqKSpOFYBH44MTdl</span>
+          </a>
         </div>
-        <div><span class="label">Backup Main DINZ</span>
-          <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/+uYi4LwT68CQxNmM1</a>
+        <div class="team-item">
+          <span class="label">Backup Main DINZ</span>
+          <a href="https://telegram.me/+uYi4LwT68CQxNmM1" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://telegram.me/+uYi4LwT68CQxNmM1</span>
+          </a>
         </div>
-        <div><span class="label">Free Channel CessDINZ</span>
-          <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+EtbIvUoG8-UzZjQ1</a>
+        <div class="team-item">
+          <span class="label">Free Channel CessDINZ</span>
+          <a href="https://t.me/+EtbIvUoG8-UzZjQ1" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/+EtbIvUoG8-UzZjQ1</span>
+          </a>
         </div>
-        <div><span class="label">Free Users</span>
-          <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/+RoE0_1yvHqpmMGZl</a>
+        <div class="team-item">
+          <span class="label">Free Users</span>
+          <a href="https://telegram.me/+RoE0_1yvHqpmMGZl" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://telegram.me/+RoE0_1yvHqpmMGZl</span>
+          </a>
         </div>
-        <div><span class="label">Backup Channel DINZ</span>
-          <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+VshqcIhp7atmMzM1</a>
+        <div class="team-item">
+          <span class="label">Backup Channel DINZ</span>
+          <a href="https://t.me/+VshqcIhp7atmMzM1" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/+VshqcIhp7atmMzM1</span>
+          </a>
         </div>
-        <div><span class="label">CESSMOD Public Channel</span>
-          <a href="https://t.me/Cessmod" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/Cessmod</a>
+        <div class="team-item">
+          <span class="label">CESSMOD Public Channel</span>
+          <a href="https://t.me/Cessmod" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/Cessmod</span>
+          </a>
         </div>
-        <div><span class="label">Product Pricelist DINZ</span>
-          <a href="https://t.me/priceonlymodinj" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/priceonlymodinj</a>
+        <div class="team-item">
+          <span class="label">Product Pricelist DINZ</span>
+          <a href="https://t.me/priceonlymodinj" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/priceonlymodinj</span>
+          </a>
         </div>
-        <div><span class="label">Buy/Sell CODM/ML Accounts</span>
-          <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://t.me/+wt_UWW6jKXxlMTQ1</a>
+        <div class="team-item">
+          <span class="label">Buy/Sell CODM/ML Accounts</span>
+          <a href="https://t.me/+wt_UWW6jKXxlMTQ1" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://t.me/+wt_UWW6jKXxlMTQ1</span>
+          </a>
         </div>
-        <div><span class="label">CESS MOD Public Group</span>
-          <a href="https://telegram.me/Cesssdc" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'"> https://telegram.me/Cesssdc</a>
+        <div class="team-item">
+          <span class="label">CESS MOD Public Group</span>
+          <a href="https://telegram.me/Cesssdc" target="_blank">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" alt="Telegram" onerror="this.style.display='none'">
+            <span class="link-text">https://telegram.me/Cesssdc</span>
+          </a>
         </div>
       </div>
     </div>
